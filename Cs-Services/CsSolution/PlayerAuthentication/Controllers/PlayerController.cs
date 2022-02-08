@@ -28,7 +28,7 @@ namespace AuthoritativeGameMechanics.Controllers
         {
             throw new NotImplementedException();
             //todo get player data
-          //  Player player = new Player();
+         //   Player player = new Player();
                      
             //todo validate input data
             // Call the query

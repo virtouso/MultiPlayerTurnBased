@@ -21,4 +21,10 @@
     <ProjectReference Include="..\SharedUtility\SharedUtility.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\" />
+    <Folder Include="Hooks\" />
+    <Folder Include="Steps\" />
+  </ItemGroup>
+
 </Project>
