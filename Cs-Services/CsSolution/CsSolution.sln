@@ -5,64 +5,59 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcelotGateWay", "OcelotGateWay\OcelotGateWay.csproj", "{B21F336D-88C1-4ABF-8F9A-5A69E6B3B64B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerAuthentication", "PlayerAuthentication\PlayerAuthentication.csproj", "{DA0AE2FD-37B5-4781-B742-7D60F0B482D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerAuthentication", "PlayerAuthentication\PlayerAuthentication.csproj", "{DA0AE2FD-37B5-4781-B742-7D60F0B482D5}"
 	ProjectSection(ProjectDependencies) = postProject
 		{32A91724-7681-4861-BDD2-87D8362017FB} = {32A91724-7681-4861-BDD2-87D8362017FB}
 		{C53D5D59-778C-4F3D-9993-B255546F774B} = {C53D5D59-778C-4F3D-9993-B255546F774B}
 		{C605E375-A209-485F-A3BE-8E59E5DB9023} = {C605E375-A209-485F-A3BE-8E59E5DB9023}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeaderBoard", "LeaderBoard\LeaderBoard.csproj", "{430E7D6B-1414-4E7D-AAEB-3B37E1151CA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaderBoard", "LeaderBoard\LeaderBoard.csproj", "{430E7D6B-1414-4E7D-AAEB-3B37E1151CA5}"
 	ProjectSection(ProjectDependencies) = postProject
 		{32A91724-7681-4861-BDD2-87D8362017FB} = {32A91724-7681-4861-BDD2-87D8362017FB}
 		{C605E375-A209-485F-A3BE-8E59E5DB9023} = {C605E375-A209-485F-A3BE-8E59E5DB9023}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchServer", "MatchServer\MatchServer.csproj", "{E0795F07-8C4A-4803-AC0D-CDAA8A6BABA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatchServer", "MatchServer\MatchServer.csproj", "{E0795F07-8C4A-4803-AC0D-CDAA8A6BABA2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{32A91724-7681-4861-BDD2-87D8362017FB} = {32A91724-7681-4861-BDD2-87D8362017FB}
 		{C605E375-A209-485F-A3BE-8E59E5DB9023} = {C605E375-A209-485F-A3BE-8E59E5DB9023}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedModels", "SharedModels\SharedModels.csproj", "{C605E375-A209-485F-A3BE-8E59E5DB9023}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedModels", "SharedModels\SharedModels.csproj", "{C605E375-A209-485F-A3BE-8E59E5DB9023}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedUtility", "SharedUtility\SharedUtility.csproj", "{32A91724-7681-4861-BDD2-87D8362017FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedUtility", "SharedUtility\SharedUtility.csproj", "{32A91724-7681-4861-BDD2-87D8362017FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthoritativeGameMechanics", "AuthoritativeGameMechanics\AuthoritativeGameMechanics.csproj", "{CB8AFD7B-BC87-41EF-B163-30E880780976}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthoritativeGameMechanics", "AuthoritativeGameMechanics\AuthoritativeGameMechanics.csproj", "{CB8AFD7B-BC87-41EF-B163-30E880780976}"
 	ProjectSection(ProjectDependencies) = postProject
 		{32A91724-7681-4861-BDD2-87D8362017FB} = {32A91724-7681-4861-BDD2-87D8362017FB}
 		{C605E375-A209-485F-A3BE-8E59E5DB9023} = {C605E375-A209-485F-A3BE-8E59E5DB9023}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthoritativeGameMechanics_Tests", "AuthoritativeGameMechanics_Tests\AuthoritativeGameMechanics_Tests.csproj", "{73E20321-5457-4947-AA0A-C9266347DF83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthoritativeGameMechanics_Tests", "AuthoritativeGameMechanics_Tests\AuthoritativeGameMechanics_Tests.csproj", "{73E20321-5457-4947-AA0A-C9266347DF83}"
 	ProjectSection(ProjectDependencies) = postProject
 		{32A91724-7681-4861-BDD2-87D8362017FB} = {32A91724-7681-4861-BDD2-87D8362017FB}
 		{C605E375-A209-485F-A3BE-8E59E5DB9023} = {C605E375-A209-485F-A3BE-8E59E5DB9023}
 		{CB8AFD7B-BC87-41EF-B163-30E880780976} = {CB8AFD7B-BC87-41EF-B163-30E880780976}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeaderBoard_Tests", "LeaderBoard_Tests\LeaderBoard_Tests.csproj", "{37A29413-9F01-43CE-AC44-5B980A290D53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaderBoard_Tests", "LeaderBoard_Tests\LeaderBoard_Tests.csproj", "{37A29413-9F01-43CE-AC44-5B980A290D53}"
 	ProjectSection(ProjectDependencies) = postProject
 		{32A91724-7681-4861-BDD2-87D8362017FB} = {32A91724-7681-4861-BDD2-87D8362017FB}
 		{430E7D6B-1414-4E7D-AAEB-3B37E1151CA5} = {430E7D6B-1414-4E7D-AAEB-3B37E1151CA5}
 		{C605E375-A209-485F-A3BE-8E59E5DB9023} = {C605E375-A209-485F-A3BE-8E59E5DB9023}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchServer_Tests", "MatchServer_Tests\MatchServer_Tests.csproj", "{767B7F46-87A2-431E-B3EC-92DB5E62AF66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatchServer_Tests", "MatchServer_Tests\MatchServer_Tests.csproj", "{767B7F46-87A2-431E-B3EC-92DB5E62AF66}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E0795F07-8C4A-4803-AC0D-CDAA8A6BABA2} = {E0795F07-8C4A-4803-AC0D-CDAA8A6BABA2}
 		{32A91724-7681-4861-BDD2-87D8362017FB} = {32A91724-7681-4861-BDD2-87D8362017FB}
 		{C605E375-A209-485F-A3BE-8E59E5DB9023} = {C605E375-A209-485F-A3BE-8E59E5DB9023}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerAuthentication_Tests", "PlayerAuthentication_Tests\PlayerAuthentication_Tests.csproj", "{6222761F-ABC9-4BED-98C7-0DCBCE17081B}"
-	ProjectSection(ProjectDependencies) = postProject
-		{32A91724-7681-4861-BDD2-87D8362017FB} = {32A91724-7681-4861-BDD2-87D8362017FB}
-		{C605E375-A209-485F-A3BE-8E59E5DB9023} = {C605E375-A209-485F-A3BE-8E59E5DB9023}
-		{DA0AE2FD-37B5-4781-B742-7D60F0B482D5} = {DA0AE2FD-37B5-4781-B742-7D60F0B482D5}
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedRepository", "SharedRepository\SharedRepository.csproj", "{C53D5D59-778C-4F3D-9993-B255546F774B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedRepository", "SharedRepository\SharedRepository.csproj", "{C53D5D59-778C-4F3D-9993-B255546F774B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerAuthentication.Tests", "PlayerAuthentication.Tests\PlayerAuthentication.Tests.csproj", "{F4A864AF-EB3D-48CF-8646-F9D8CA9212E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -110,14 +105,14 @@ Global
 		{767B7F46-87A2-431E-B3EC-92DB5E62AF66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{767B7F46-87A2-431E-B3EC-92DB5E62AF66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{767B7F46-87A2-431E-B3EC-92DB5E62AF66}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6222761F-ABC9-4BED-98C7-0DCBCE17081B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6222761F-ABC9-4BED-98C7-0DCBCE17081B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6222761F-ABC9-4BED-98C7-0DCBCE17081B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6222761F-ABC9-4BED-98C7-0DCBCE17081B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C53D5D59-778C-4F3D-9993-B255546F774B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C53D5D59-778C-4F3D-9993-B255546F774B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C53D5D59-778C-4F3D-9993-B255546F774B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C53D5D59-778C-4F3D-9993-B255546F774B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4A864AF-EB3D-48CF-8646-F9D8CA9212E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4A864AF-EB3D-48CF-8646-F9D8CA9212E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4A864AF-EB3D-48CF-8646-F9D8CA9212E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4A864AF-EB3D-48CF-8646-F9D8CA9212E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
