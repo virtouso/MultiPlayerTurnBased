@@ -8,5 +8,12 @@ namespace SharedRepository.Repository.RedisRepository
 {
     internal class RedisRepository:IRedisRepository
     {
+
+        public RedisRepository()
+        {
+
+        }
+
+
     }
 }
