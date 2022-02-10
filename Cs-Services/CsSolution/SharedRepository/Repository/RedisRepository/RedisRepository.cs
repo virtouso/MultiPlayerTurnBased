@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StackExchange.Redis;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,8 @@ namespace SharedRepository.Repository.RedisRepository
 
         public RedisRepository()
         {
-
+            IConnectionMultiplexer redis = ConnectionMultiplexer.Connect("10.0.75.1");
+            services.AddScoped(s => redis.GetDatabase());
         }
 
 
