@@ -1,8 +1,10 @@
+using StackExchange.Redis;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped(s => redis.GetDatabase());
+
 
 var app = builder.Build();
 
