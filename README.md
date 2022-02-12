@@ -3,7 +3,7 @@
 
 ## Used C# on backend side & unity on client side
 
-
+- part of project that is no published yet.
 
 # Backend
 - used BDD
