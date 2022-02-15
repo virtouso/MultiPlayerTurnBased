@@ -11,12 +11,12 @@ Scenario: Update Player Score With Incremental Score
 
 
 Scenario: Update Player Score With Decremental Score And Current Score Is Bigger Than Apllying Score
-	Given Player Score Is 50
-	When Applying Score Is -20
-	Then Player Score Is 30
+	Given Player Score Is Bigger Than Applying
+	When Applying Score Is Negative
+	Then Player Score Is New Positive Value
 
 
 Scenario: Update Player Score With Decremental Score And Current Score Is Less Than Apllying Score
-	Given Player Score Is 10
-	When Applying Score Is -20
+	Given Player Score Is Less Than Applying
+	When Applying Score Is Negative
 	Then Player Score Is 0 And Not Negative
