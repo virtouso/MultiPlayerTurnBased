@@ -1,9 +1,9 @@
 ﻿Feature: MakingRandomUnratedMatchMaking
 
-A short summary of the feature
+A Player Joins Match Server And Asks For A Match
 
 @tag1
-Scenario: [scenario name]
-	Given [context]
+Scenario: New Player Joined The Server And There Is No Player Waiting For New Match
+	Given 
 	When [action]
 	Then [outcome]

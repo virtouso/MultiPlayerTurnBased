@@ -54,10 +54,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerAuthentication.Tests"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaderBoard.Tests", "LeaderBoard.Tests\LeaderBoard.Tests.csproj", "{299B43AA-CF7F-4989-86FE-161B4E8D2072}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerAuthentication.Tests.Integration", "PlayerAuthentication.Tests.Integration\PlayerAuthentication.Tests.Integration.csproj", "{7C6DE1BD-224F-43BD-B5D0-FA9A9EE8CE29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerAuthentication.Tests.Integration", "PlayerAuthentication.Tests.Integration\PlayerAuthentication.Tests.Integration.csproj", "{7C6DE1BD-224F-43BD-B5D0-FA9A9EE8CE29}"
 	ProjectSection(ProjectDependencies) = postProject
 		{DA0AE2FD-37B5-4781-B742-7D60F0B482D5} = {DA0AE2FD-37B5-4781-B742-7D60F0B482D5}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchServer.Tests", "MatchServer.Tests\MatchServer.Tests.csproj", "{35A9C448-C20F-4BF3-BB14-7999ABA77C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -117,6 +119,10 @@ Global
 		{7C6DE1BD-224F-43BD-B5D0-FA9A9EE8CE29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C6DE1BD-224F-43BD-B5D0-FA9A9EE8CE29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C6DE1BD-224F-43BD-B5D0-FA9A9EE8CE29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35A9C448-C20F-4BF3-BB14-7999ABA77C2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35A9C448-C20F-4BF3-BB14-7999ABA77C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35A9C448-C20F-4BF3-BB14-7999ABA77C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35A9C448-C20F-4BF3-BB14-7999ABA77C2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
