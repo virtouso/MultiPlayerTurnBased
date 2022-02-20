@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using SharedModels;
 using System;
 using System.Collections.Generic;
@@ -28,11 +29,15 @@ namespace SharedModels
         public class Identity
         {
             [BsonId]
-            public string Id;
+            public ObjectId Id;
             public string UniqueName;
             public string Password;
 
-            public Identity(string id, string uniqueName, string password)
+            public Identity()
+            {
+
+            }
+            public Identity(ObjectId id, string uniqueName, string password)
             {
                 Id = id;
                 UniqueName = uniqueName;
@@ -66,7 +71,7 @@ namespace SharedModels
                 public string Brand;
                 public string OperatingSystem;
 
-                public Device(string deviceId=null, string version=null, string brand=null, string operatingSystem=null)
+                public Device(string deviceId = null, string version = null, string brand = null, string operatingSystem = null)
                 {
                     DeviceId = deviceId;
                     Version = version;

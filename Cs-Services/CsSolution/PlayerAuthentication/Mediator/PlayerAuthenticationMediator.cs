@@ -2,12 +2,19 @@
 using PlayerAuthentication.Models;
 using SharedModels.General.Types;
 using static SharedModels.Player.Tracking;
+using SharedRepository;
 
 namespace PlayerAuthentication.Mediator
 {
     public class PlayerAuthenticationMediator : IPlayerAuthenticationMediator
     {
-        private readonly SharedRepository.IMongoRepository _repository;
+        private readonly IMongoRepository _repository;
+
+        public PlayerAuthenticationMediator(IMongoRepository mongoRepository)
+        {
+            _repository = mongoRepository;
+        }
+
 
         public ReturnData<string> InitGuestPlayer(PlayerAuthenticationInput inputData)
         {

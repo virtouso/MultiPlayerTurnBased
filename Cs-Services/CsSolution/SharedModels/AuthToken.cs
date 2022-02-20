@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,10 @@ namespace SharedModels
     public class AuthToken
     {
         [BsonId]
-        public string TokenId;
-        public string PlayerId;
+        public ObjectId TokenId;
+        public ObjectId PlayerId;
 
-        public AuthToken( string playerId, string tokenId=null)
+        public AuthToken(ObjectId playerId, ObjectId tokenId )
         {
             TokenId = tokenId;
             PlayerId = playerId;

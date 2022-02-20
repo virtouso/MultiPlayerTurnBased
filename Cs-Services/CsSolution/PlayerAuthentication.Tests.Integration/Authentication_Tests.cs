@@ -34,7 +34,10 @@ namespace PlayerAuthentication.Tests.Integration
       {
                 new KeyValuePair<string, string>("Id", "123123"),
                 new KeyValuePair<string, string>("UserName", "moeen"),
-                new KeyValuePair<string, string>("seriesid", "dasds"),
+                new KeyValuePair<string, string>("GooglePlayId", "123123"),
+                new KeyValuePair<string, string>("Password", "123123"),
+                new KeyValuePair<string, string>("DeviceId", "123123123123123")
+
 
             });
             var response = await _httpClient.PostAsync("/InitGuestPlayer",content);

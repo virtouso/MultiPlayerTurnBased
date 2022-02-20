@@ -8,7 +8,7 @@ namespace SharedRepository.Repository.RedisRepository.References
 {
     internal static class CollectionNames
     {
-        public static string Player = "Player";
-        public static string Token = "Token";
+        public static string Player = "Players";
+        public static string Token = "PlayerTokens";
     }
 }
