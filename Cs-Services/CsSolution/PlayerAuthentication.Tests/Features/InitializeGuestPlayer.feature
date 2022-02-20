@@ -8,3 +8,11 @@ Scenario: Player Only Has Started Using Device Id And No More Unique Data
 	Given GooglePlay ID Is Null
 	When Player Initial Model Submitted
 	Then Temp Flag Is True And Temp Token Is Not Null
+
+
+
+Scenario: Player Has Started Using Device Id But Its Not Valid Or Is Null
+
+	Given Device Id Is Not Valid
+	When Player Initial Model Submitted
+	Then Return initiation Invalid

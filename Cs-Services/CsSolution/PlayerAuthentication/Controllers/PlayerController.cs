@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PlayerAuthentication.Mediator;
+using PlayerAuthentication.Models;
 using SharedModels;
 namespace AuthoritativeGameMechanics.Controllers
 {
@@ -16,23 +17,27 @@ namespace AuthoritativeGameMechanics.Controllers
 
 
 
+          
+   
 
-        [HttpPost()]
-        public string Index()
+        [HttpPost("/InitGuestPlayer")]
+        public IActionResult InitGuest()
         {
-        return "Result Susscess";
-        }
+            var id = HttpContext.Request.Form["Id"];
+            var userName = HttpContext.Request.Form["UserName"];
+            var googlePlayId= HttpContext.Request.Form["GooglePlayId"];
+            var password = HttpContext.Request.Form["Password"];
+            var deviceId= HttpContext.Request.Form["DeviceId"];
+            PlayerAuthenticationInput input = new PlayerAuthenticationInput(id,userName,googlePlayId,password,deviceId);
+            var validation = input.ModelValidator.Validate(input);
+
+            if (!validation.IsValid)
+                return BadRequest();
 
 
-        public string GetDataAndGiveToken()
-        {
-            throw new NotImplementedException();
-            //todo get player data
-         //   Player player = new Player();
-                     
-            //todo validate input data
-            // Call the query
-            // return the reply to the player with token
+
+            return Ok();
+
         }
 
 

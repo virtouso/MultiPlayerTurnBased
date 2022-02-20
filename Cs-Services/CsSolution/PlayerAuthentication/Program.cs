@@ -1,14 +1,12 @@
-
-
 using PlayerAuthentication.Mediator;
-
-
+using SharedRepository;
+using Microsoft.Extensions.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// builder. Services.Configure<TurnBasedMultiPlayerDataBaseSettings>(builder. Configuration.GetSection("TurnBasedMultiPlayer"));
+
 
 
 builder.Services.AddSingleton<IPlayerAuthenticationMediator, PlayerAuthenticationMediator>();
@@ -18,9 +16,14 @@ builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
+string mongoUserName = builder.Configuration.GetValue<string>("Mongo:UserName");
+string mongoPassword = builder.Configuration.GetValue<string>("Mongo:Password");
+string mongoServer = builder.Configuration.GetValue<string>("Mongo:Server");
+string mongoDatabase = builder.Configuration.GetValue<string>("Mongo:DatabaseName");
+
+builder.Services.AddSingleton(typeof(IMongoRepository), new MongoRepository(mongoUserName, mongoPassword, mongoServer, mongoDatabase));
 
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

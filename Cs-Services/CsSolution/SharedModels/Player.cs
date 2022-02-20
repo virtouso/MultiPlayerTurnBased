@@ -10,7 +10,7 @@ namespace SharedModels
 {
     public class Player
     {
-        [BsonId]
+    
         public Identity PlayerIdentity;
         public Tracking PlayerTracking;
         public Progress PlayerProgress;
@@ -22,23 +22,19 @@ namespace SharedModels
             PlayerProgress = playerProgress;
         }
 
-        public Player(PlayerAuthenticationInput input)
-        {
-            PlayerIdentity = new Identity("",input.UniqueName,input.Password);
-
-        }
-
+   
 
 
         public class Identity
         {
-            public string _id;
+            [BsonId]
+            public string Id;
             public string UniqueName;
             public string Password;
 
             public Identity(string id, string uniqueName, string password)
             {
-                _id = id;
+                Id = id;
                 UniqueName = uniqueName;
                 Password = password;
             }

@@ -1,12 +1,10 @@
-﻿
-
-using SharedModels;
+﻿using PlayerAuthentication.Models;
 
 namespace PlayerAuthentication.Mediator
 {
     public interface IPlayerAuthenticationMediator
     {
-      string  GetDataAndGiveToken(PlayerAuthenticationInput input);
+  
 
 
 

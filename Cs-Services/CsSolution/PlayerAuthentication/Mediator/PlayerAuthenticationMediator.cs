@@ -1,6 +1,7 @@
 ﻿
 
 using SharedModels;
+using PlayerAuthentication.Models; 
 
 namespace PlayerAuthentication.Mediator
 {
@@ -8,12 +9,6 @@ namespace PlayerAuthentication.Mediator
     {
         private readonly SharedRepository.IMongoRepository _repository;
 
-        public string GetDataAndGiveToken(PlayerAuthenticationInput input)
-        {
-
-
-            return _repository.FindPlayerId(input).Data;
-
-        }
+  
     }
 }

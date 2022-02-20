@@ -34,23 +34,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthoritativeGameMechanics"
 		{C605E375-A209-485F-A3BE-8E59E5DB9023} = {C605E375-A209-485F-A3BE-8E59E5DB9023}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthoritativeGameMechanics_Tests", "AuthoritativeGameMechanics_Tests\AuthoritativeGameMechanics_Tests.csproj", "{73E20321-5457-4947-AA0A-C9266347DF83}"
-	ProjectSection(ProjectDependencies) = postProject
-		{32A91724-7681-4861-BDD2-87D8362017FB} = {32A91724-7681-4861-BDD2-87D8362017FB}
-		{C605E375-A209-485F-A3BE-8E59E5DB9023} = {C605E375-A209-485F-A3BE-8E59E5DB9023}
-		{CB8AFD7B-BC87-41EF-B163-30E880780976} = {CB8AFD7B-BC87-41EF-B163-30E880780976}
-	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatchServer_Tests", "MatchServer_Tests\MatchServer_Tests.csproj", "{767B7F46-87A2-431E-B3EC-92DB5E62AF66}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E0795F07-8C4A-4803-AC0D-CDAA8A6BABA2} = {E0795F07-8C4A-4803-AC0D-CDAA8A6BABA2}
-		{32A91724-7681-4861-BDD2-87D8362017FB} = {32A91724-7681-4861-BDD2-87D8362017FB}
-		{C605E375-A209-485F-A3BE-8E59E5DB9023} = {C605E375-A209-485F-A3BE-8E59E5DB9023}
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedRepository", "SharedRepository\SharedRepository.csproj", "{C53D5D59-778C-4F3D-9993-B255546F774B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerAuthentication.Tests", "PlayerAuthentication.Tests\PlayerAuthentication.Tests.csproj", "{F4A864AF-EB3D-48CF-8646-F9D8CA9212E8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaderBoard.Tests", "LeaderBoard.Tests\LeaderBoard.Tests.csproj", "{299B43AA-CF7F-4989-86FE-161B4E8D2072}"
 EndProject
@@ -59,7 +43,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerAuthentication.Tests.
 		{DA0AE2FD-37B5-4781-B742-7D60F0B482D5} = {DA0AE2FD-37B5-4781-B742-7D60F0B482D5}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchServer.Tests", "MatchServer.Tests\MatchServer.Tests.csproj", "{35A9C448-C20F-4BF3-BB14-7999ABA77C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatchServer.Tests", "MatchServer.Tests\MatchServer.Tests.csproj", "{35A9C448-C20F-4BF3-BB14-7999ABA77C2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerAuthentication.Tests", "PlayerAuthentication.Tests\PlayerAuthentication.Tests.csproj", "{9CB68932-5370-4CF8-8E29-1A633FB1632B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,22 +81,10 @@ Global
 		{CB8AFD7B-BC87-41EF-B163-30E880780976}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB8AFD7B-BC87-41EF-B163-30E880780976}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB8AFD7B-BC87-41EF-B163-30E880780976}.Release|Any CPU.Build.0 = Release|Any CPU
-		{73E20321-5457-4947-AA0A-C9266347DF83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{73E20321-5457-4947-AA0A-C9266347DF83}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{73E20321-5457-4947-AA0A-C9266347DF83}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{73E20321-5457-4947-AA0A-C9266347DF83}.Release|Any CPU.Build.0 = Release|Any CPU
-		{767B7F46-87A2-431E-B3EC-92DB5E62AF66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{767B7F46-87A2-431E-B3EC-92DB5E62AF66}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{767B7F46-87A2-431E-B3EC-92DB5E62AF66}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{767B7F46-87A2-431E-B3EC-92DB5E62AF66}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C53D5D59-778C-4F3D-9993-B255546F774B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C53D5D59-778C-4F3D-9993-B255546F774B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C53D5D59-778C-4F3D-9993-B255546F774B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C53D5D59-778C-4F3D-9993-B255546F774B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F4A864AF-EB3D-48CF-8646-F9D8CA9212E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F4A864AF-EB3D-48CF-8646-F9D8CA9212E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F4A864AF-EB3D-48CF-8646-F9D8CA9212E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F4A864AF-EB3D-48CF-8646-F9D8CA9212E8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{299B43AA-CF7F-4989-86FE-161B4E8D2072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{299B43AA-CF7F-4989-86FE-161B4E8D2072}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{299B43AA-CF7F-4989-86FE-161B4E8D2072}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -123,6 +97,10 @@ Global
 		{35A9C448-C20F-4BF3-BB14-7999ABA77C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35A9C448-C20F-4BF3-BB14-7999ABA77C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35A9C448-C20F-4BF3-BB14-7999ABA77C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CB68932-5370-4CF8-8E29-1A633FB1632B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CB68932-5370-4CF8-8E29-1A633FB1632B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CB68932-5370-4CF8-8E29-1A633FB1632B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CB68932-5370-4CF8-8E29-1A633FB1632B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

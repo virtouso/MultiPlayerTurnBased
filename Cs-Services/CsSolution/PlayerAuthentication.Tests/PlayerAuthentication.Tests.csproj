@@ -21,14 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Features\InitializeGuestPlayer.feature">
-      <Visible>$(UsingMicrosoftNETSdk)</Visible>
-      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
-    </None>
-    <None Update="Features\PlayerAskedToContinueAsPermanentUser.feature">
-      <Visible>$(UsingMicrosoftNETSdk)</Visible>
-      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
-    </None>
+    <ProjectReference Include="..\PlayerAuthentication\PlayerAuthentication.csproj" />
   </ItemGroup>
 
 </Project>
