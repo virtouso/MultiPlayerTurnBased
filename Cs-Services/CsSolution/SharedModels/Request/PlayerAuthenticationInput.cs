@@ -1,10 +1,12 @@
 ﻿using FluentValidation;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace PlayerAuthentication.Models
 {
     public class PlayerAuthenticationInput
     {
-        public string Id;
+        [BsonId]
+        public string Id;// its the token id
         public string UniqueName;
         public string GooglePlayId;
         public string Password;

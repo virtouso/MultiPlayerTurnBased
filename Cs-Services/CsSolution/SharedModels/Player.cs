@@ -10,7 +10,7 @@ namespace SharedModels
 {
     public class Player
     {
-    
+
         public Identity PlayerIdentity;
         public Tracking PlayerTracking;
         public Progress PlayerProgress;
@@ -22,7 +22,7 @@ namespace SharedModels
             PlayerProgress = playerProgress;
         }
 
-   
+
 
 
         public class Identity
@@ -49,6 +49,11 @@ namespace SharedModels
                 Devices = devices;
             }
 
+            public Tracking(Device Device)
+            {
+                Devices = new List<Device> { Device };
+            }
+
             public void AddDevice(Device Device)
             {
                 Devices.Add(Device);
@@ -60,8 +65,15 @@ namespace SharedModels
                 public string Version;
                 public string Brand;
                 public string OperatingSystem;
-            }
 
+                public Device(string deviceId=null, string version=null, string brand=null, string operatingSystem=null)
+                {
+                    DeviceId = deviceId;
+                    Version = version;
+                    Brand = brand;
+                    OperatingSystem = operatingSystem;
+                }
+            }
 
         }
 
@@ -69,9 +81,19 @@ namespace SharedModels
         {
             public int Gold;
             public int Silver;
+            public int Level;
+            public int Experience;
+
+            public Progress(int gold, int silver, int level, int experience)
+            {
+                Gold = gold;
+                Silver = silver;
+                Level = level;
+                Experience = experience;
+            }
         }
 
-       
+
 
     }
 }

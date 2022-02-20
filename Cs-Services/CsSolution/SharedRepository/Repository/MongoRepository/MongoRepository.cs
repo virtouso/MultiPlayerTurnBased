@@ -1,8 +1,11 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using Newtonsoft.Json;
+using PlayerAuthentication.Models;
 using SharedModels;
 using SharedModels.General;
+using SharedModels.General.Types;
+using SharedRepository.Repository.RedisRepository.References;
 
 namespace SharedRepository
 {
@@ -17,11 +20,18 @@ namespace SharedRepository
             _dataBase = _mongoClient.GetDatabase(databaseName);
         }
 
+        public async Task<ReturnData<string>> GetTokenForGuestPlayer(Player.Tracking.Device deviceInfo, Player.Progress initialProgress)
+        {
+            var playerCollection = _dataBase.GetCollection<Player>(CollectionNames.Player);
+            Player player = new Player(null, new Player.Tracking(deviceInfo), initialProgress);
+            await playerCollection.InsertOneAsync(player);
 
+            AuthToken token = new AuthToken(player.PlayerIdentity.Id);
 
+            var tokenCollection = _dataBase.GetCollection<AuthToken>(CollectionNames.Token);
+            await tokenCollection.InsertOneAsync(token);
 
-
-
-
+            return new ReturnData<string>(token.TokenId);
+        }
     }
 }

@@ -1,6 +1,9 @@
 using FluentValidation.Results;
+using NSubstitute;
+using NSubstitute.Core;
+using PlayerAuthentication.Mediator;
 using PlayerAuthentication.Models;
-using System;
+using SharedModels.General.Types;
 using TechTalk.SpecFlow;
 
 namespace PlayerAuthentication.Tests.StepDefinitions
@@ -9,14 +12,25 @@ namespace PlayerAuthentication.Tests.StepDefinitions
     public class InitializeGuestPlayerStepDefinitions
     {
 
+
         string _devideId = null;
         string _googlePlayId = null;
 
         ValidationResult _validationResult;
 
-        Mediator.PlayerAuthenticationMediator _mediator = new Mediator.PlayerAuthenticationMediator();
+        Mediator.IPlayerAuthenticationMediator _mediator;
+       PlayerAuthenticationInput _input;
 
+    [BeforeScenario]
+        public  void Setup()
+        {
+        _input = new PlayerAuthenticationInput("123456", "123", "123", "123456", "32312312332");
 
+            _mediator = Substitute.For<IPlayerAuthenticationMediator>();
+            _mediator.InitGuestPlayer(_input).Returns(new ReturnData<string>("123zxc123zxc"));
+        }
+
+     
 
         [Given(@"Device Id Is Not Null")]
         public void GivenDeviceIdIsNotNull()
@@ -31,12 +45,13 @@ namespace PlayerAuthentication.Tests.StepDefinitions
             _googlePlayId = null;
         }
 
-        [When(@"Player Initial Model Submitted")]
+        ReturnData<string> _tempToken;
+       [When(@"Player Initial Model Submitted")]
         public void WhenPlayerInitialModelSubmitted()
         {
-            PlayerAuthenticationInput input = new PlayerAuthenticationInput("123", "123", _googlePlayId, "123", _devideId);
-            _validationResult = input.ModelValidator.Validate(input);
-            string tempToken= _mediator.GetTokenForGuestPlayer(input)
+           
+            _validationResult = _input.ModelValidator.Validate(_input);
+            _tempToken = _mediator.InitGuestPlayer(_input);
 
         }
 
@@ -44,9 +59,14 @@ namespace PlayerAuthentication.Tests.StepDefinitions
         public void ThenTempFlagIsTrueAndTempTokenIsNotNull()
         {
             Assert.True(_validationResult.IsValid);
-
+           Assert.Equal("123zxc123zxc", _tempToken.Data);
 
         }
+
+
+
+
+
 
 
 
@@ -64,5 +84,16 @@ namespace PlayerAuthentication.Tests.StepDefinitions
         {
             Assert.False(_validationResult.IsValid);
         }
+
+        [AfterScenario]
+        public void TearDown()
+        {
+
+        }
+
+
+
+
+
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharedModels.General
+namespace SharedModels.General.Types
 {
     public enum ReturnDataTypes
     {

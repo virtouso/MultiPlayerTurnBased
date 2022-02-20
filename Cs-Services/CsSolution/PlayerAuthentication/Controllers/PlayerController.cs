@@ -16,10 +16,6 @@ namespace AuthoritativeGameMechanics.Controllers
 
 
 
-
-          
-   
-
         [HttpPost("/InitGuestPlayer")]
         public IActionResult InitGuest()
         {
@@ -34,11 +30,14 @@ namespace AuthoritativeGameMechanics.Controllers
             if (!validation.IsValid)
                 return BadRequest();
 
+            var result= _mediator.InitGuestPlayer(input);
 
-
+            Response.Headers.Add("Auth-Bearer",result.Data);
             return Ok();
 
         }
+
+
 
 
 
