@@ -16,7 +16,7 @@ namespace SharedRepository
 
         public MongoRepository(string userName, string password, string server, string databaseName)
         {
-            _mongoClient = new MongoClient($"mongodb+srv://{userName}:{password}@{server}/{databaseName}");
+            _mongoClient = new MongoClient($"mongodb://{userName}:{password}@{server}/{databaseName}");
             _dataBase = _mongoClient.GetDatabase(databaseName);
         }
 

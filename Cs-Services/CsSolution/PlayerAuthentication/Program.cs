@@ -12,16 +12,16 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IPlayerAuthenticationMediator, PlayerAuthenticationMediator>();
 builder.Services.AddHealthChecks();
 
-
-
-var app = builder.Build();
-
 string mongoUserName = builder.Configuration.GetValue<string>("Mongo:UserName");
 string mongoPassword = builder.Configuration.GetValue<string>("Mongo:Password");
 string mongoServer = builder.Configuration.GetValue<string>("Mongo:Server");
 string mongoDatabase = builder.Configuration.GetValue<string>("Mongo:DatabaseName");
 
 builder.Services.AddSingleton(typeof(IMongoRepository), new MongoRepository(mongoUserName, mongoPassword, mongoServer, mongoDatabase));
+
+var app = builder.Build();
+
+
 
 
 if (!app.Environment.IsDevelopment())

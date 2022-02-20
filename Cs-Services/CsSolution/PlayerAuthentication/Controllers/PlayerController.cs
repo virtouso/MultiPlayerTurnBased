@@ -15,15 +15,22 @@ namespace AuthoritativeGameMechanics.Controllers
         }
 
 
+        [HttpGet("/TestRequest")]
+        public IActionResult TestRequest()
+        {
+            return Ok();
+        }
+
+
 
         [HttpPost("/InitGuestPlayer")]
         public IActionResult InitGuest()
         {
-            var id = HttpContext.Request.Form["Id"];
-            var userName = HttpContext.Request.Form["UserName"];
-            var googlePlayId= HttpContext.Request.Form["GooglePlayId"];
-            var password = HttpContext.Request.Form["Password"];
-            var deviceId= HttpContext.Request.Form["DeviceId"];
+            string id = HttpContext.Request.Form["Id"];
+            string userName = HttpContext.Request.Form["UserName"];
+            string googlePlayId= HttpContext.Request.Form["GooglePlayId"];
+            string password = HttpContext.Request.Form["Password"];
+            string deviceId= HttpContext.Request.Form["DeviceId"];
             PlayerAuthenticationInput input = new PlayerAuthenticationInput(id,userName,googlePlayId,password,deviceId);
             var validation = input.ModelValidator.Validate(input);
 

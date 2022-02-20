@@ -11,7 +11,7 @@ namespace PlayerAuthentication.Tests.Integration
     {
         private readonly HttpClient _httpClient;
 
-
+        
         public HealthCheck_Tests(WebApplicationFactory<Program> factory)
         {
             _httpClient = factory.CreateDefaultClient();
