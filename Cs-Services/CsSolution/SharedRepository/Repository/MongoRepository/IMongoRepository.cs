@@ -9,9 +9,9 @@ namespace SharedRepository
 {
     public interface IMongoRepository
     {
-        public  Task<Tuple<ResponseType, string>> GetTokenForInitialPlayer(Identity identity,Service service , Progress initialProgress);
+        public  Task<(ResponseType, string)> GetTokenForInitialPlayer(Identity identity,Service service , Progress initialProgress);
 
-        public Task<Tuple<ResponseType, Progress>> AddServiceToPlayer(Service service);
+        public Task<(ResponseType, Progress)> AddServiceToPlayer(string authToken ,Service service);
 
     }
 }

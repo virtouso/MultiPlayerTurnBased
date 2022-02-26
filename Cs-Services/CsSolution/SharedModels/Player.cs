@@ -32,15 +32,15 @@ namespace SharedModels
         {
             [BsonId]
             public ObjectId Id;
+           
             public string UniqueName;
 
             public Identity()
             {
 
             }
-            public Identity(ObjectId id, string uniqueName)
+            public Identity( string uniqueName)
             {
-                Id = id;
                 UniqueName = uniqueName;
             }
         }
