@@ -1,8 +1,10 @@
 ﻿using SharedModels;
 using PlayerAuthentication.Models;
 using SharedModels.General.Types;
-using static SharedModels.Player.Tracking;
 using SharedRepository;
+
+
+
 
 namespace PlayerAuthentication.Mediator
 {
@@ -15,15 +17,19 @@ namespace PlayerAuthentication.Mediator
             _repository = mongoRepository;
         }
 
-
-        public ReturnData<string> InitGuestPlayer(PlayerAuthenticationInput inputData)
+        public int BindServiceToPlayer(PlayerAuthenticationInput inputData)
         {
-            Device device = new Device(inputData.DeviceId);
+            throw new NotImplementedException();
+        }
 
-            //todo should read config form database
-            Player.Progress progress = new Player.Progress(20, 100, 0, 0);
+        public (int, string) InitPlayerAsGuest(PlayerAuthenticationInput inputData)
+        {
+            throw new NotImplementedException();
+        }
 
-            return _repository.GetTokenForGuestPlayer(device, progress).Result;
+        public (int, string) InitPlayerWithService(PlayerAuthenticationInput inputData)
+        {
+            throw new NotImplementedException();
         }
     }
 }

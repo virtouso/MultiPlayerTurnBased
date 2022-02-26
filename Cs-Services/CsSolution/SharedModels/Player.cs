@@ -13,14 +13,16 @@ namespace SharedModels
     {
 
         public Identity PlayerIdentity;
-        public Tracking PlayerTracking;
+        public List<Service> Services;
         public Progress PlayerProgress;
-
-        public Player(Identity playerIdentity, Tracking playerTracking, Progress playerProgress)
+        public bool IsGuest;
+        public Player(Identity playerIdentity, Progress playerProgress, Service service)
         {
             PlayerIdentity = playerIdentity;
-            PlayerTracking = playerTracking;
             PlayerProgress = playerProgress;
+            AddService(service);
+
+            IsGuest = (!Services?.Any() != true) ? true : false;
         }
 
 
@@ -31,56 +33,37 @@ namespace SharedModels
             [BsonId]
             public ObjectId Id;
             public string UniqueName;
-            public string Password;
 
             public Identity()
             {
 
             }
-            public Identity(ObjectId id, string uniqueName, string password)
+            public Identity(ObjectId id, string uniqueName)
             {
                 Id = id;
                 UniqueName = uniqueName;
-                Password = password;
             }
         }
 
-        public class Tracking
+
+        public void AddService(Service service)
         {
-            public List<Device> Devices;
-            public string GooglePlayId;
-            public Tracking(List<Device> devices)
-            {
-                Devices = devices;
-            }
-
-            public Tracking(Device Device)
-            {
-                Devices = new List<Device> { Device };
-            }
-
-            public void AddDevice(Device Device)
-            {
-                Devices.Add(Device);
-            }
-
-            public class Device
-            {
-                public string DeviceId;
-                public string Version;
-                public string Brand;
-                public string OperatingSystem;
-
-                public Device(string deviceId = null, string version = null, string brand = null, string operatingSystem = null)
-                {
-                    DeviceId = deviceId;
-                    Version = version;
-                    Brand = brand;
-                    OperatingSystem = operatingSystem;
-                }
-            }
-
+            if (Services is null)
+                Services = new List<Service>();
+            Services.Add(service);
         }
+        public class Service
+        {
+            string Id;
+            String Email;
+
+            public Service(string id, string email)
+            {
+                Id = id;
+                Email = email;
+            }
+        }
+
 
         public class Progress
         {

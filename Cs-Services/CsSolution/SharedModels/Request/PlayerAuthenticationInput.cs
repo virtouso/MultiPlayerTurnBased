@@ -5,38 +5,34 @@ namespace PlayerAuthentication.Models
 {
     public class PlayerAuthenticationInput
     {
-        [BsonId]
-        public string Id;// its the token id
+
+        public string TokenId;// its the token id
         public string UniqueName;
-        public string GooglePlayId;
-        public string Password;
-        public string DeviceId;
+        public string ServiceId;
+        public string Email;
 
-        public bool IsTemp;
-        public bool IsValid;
+
+
         public Validator ModelValidator = new Validator();
-        public PlayerAuthenticationInput(string id, string uniqueName, string googlePlayId, string password, string deviceId)
+
+        public PlayerAuthenticationInput(string tokenId, string uniqueName, string serviceId, string email)
         {
-            Id = id;
+            TokenId = tokenId;
             UniqueName = uniqueName;
-            GooglePlayId = googlePlayId;
-            Password = password;
-            DeviceId = deviceId;
+            ServiceId = serviceId;
+            Email = email;
+
         }
-
-
 
         public class Validator : AbstractValidator<PlayerAuthenticationInput>
         {
             public Validator()
             {
-                RuleFor(x => x.Id).NotNull().NotEmpty();
+                RuleFor(x => x.TokenId).NotNull().NotEmpty();
                 RuleFor(x => x.UniqueName).NotNull().NotEmpty();
-                RuleFor(x => x.Password).NotNull().MinimumLength(6).MaximumLength(12);
-                RuleFor(x => x.GooglePlayId).NotNull();
-                RuleFor(x=>x.DeviceId).NotNull().MinimumLength(10).MaximumLength(20);
+                RuleFor(x => x.ServiceId).NotNull();
+                RuleFor(x => x.Email).NotEmpty().EmailAddress();
             }
-
 
 
 

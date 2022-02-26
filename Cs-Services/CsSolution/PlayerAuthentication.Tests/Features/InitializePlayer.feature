@@ -5,7 +5,7 @@ Initialize Player On Different Conditions
 
 Scenario: Player Has Auth Token And Is Not Valid
 	Given Auth Token Not Exist
-	Given Auth Token Is Expired
+	Given PlayerService Not Exists
 	When Ask To  Initialize Player Data
 	Then Return 401 To The Player
 

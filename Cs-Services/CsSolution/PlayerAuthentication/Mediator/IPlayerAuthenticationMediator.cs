@@ -5,6 +5,9 @@ namespace PlayerAuthentication.Mediator
 {
     public interface IPlayerAuthenticationMediator
     {
-        ReturnData<string> InitGuestPlayer(PlayerAuthenticationInput inputData);
+        (int, string) InitPlayerAsGuest(PlayerAuthenticationInput inputData);
+        (int,string) InitPlayerWithService(PlayerAuthenticationInput inputData);
+        int BindServiceToPlayer(PlayerAuthenticationInput inputData);
+
     }
 }

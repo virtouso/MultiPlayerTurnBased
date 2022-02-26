@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PlayerAuthentication.Mediator;
 using PlayerAuthentication.Models;
-using SharedModels;
 namespace AuthoritativeGameMechanics.Controllers
 {
 
@@ -23,28 +22,42 @@ namespace AuthoritativeGameMechanics.Controllers
 
 
 
-        [HttpPost("/InitGuestPlayer")]
-        public IActionResult InitGuest()
+        [HttpPost("/InitPlayer")]
+        public IActionResult InitPlayer(bool guest, string authToken, string serviceId, string servceEmail, string userName)
         {
-            string id = HttpContext.Request.Form["Id"];
-            string userName = HttpContext.Request.Form["UserName"];
-            string googlePlayId= HttpContext.Request.Form["GooglePlayId"];
-            string password = HttpContext.Request.Form["Password"];
-            string deviceId= HttpContext.Request.Form["DeviceId"];
-            PlayerAuthenticationInput input = new PlayerAuthenticationInput(id,userName,googlePlayId,password,deviceId);
+
+
+            PlayerAuthenticationInput input = new PlayerAuthenticationInput(authToken, userName, serviceId, servceEmail);
             var validation = input.ModelValidator.Validate(input);
 
             if (!validation.IsValid)
                 return BadRequest();
 
-            var result= _mediator.InitGuestPlayer(input);
+            if (guest)
+            {
+                (int, string) guestResult = _mediator.InitPlayerAsGuest(input);
+                Response.Headers.Add("Auth-Bearer", guestResult.Item2);
+                return StatusCode(guestResult.Item1);
+            }
 
-            Response.Headers.Add("Auth-Bearer",result.Data);
-            return Ok();
+            // not guest
+            (int, string) permanentResult = _mediator.InitPlayerWithService(input);
+            Response.Headers.Add("Auth-Bearer", permanentResult.Item2);
+            return StatusCode(permanentResult.Item1);
 
         }
 
 
+
+        [HttpPost("BindService")]
+        public IActionResult BindService(string authToken,string userName, string serviceId, string serviceEmail)
+        {
+            PlayerAuthenticationInput input = new PlayerAuthenticationInput(authToken, userName, serviceId, serviceEmail);
+            int bindResult = _mediator.BindServiceToPlayer(input);
+
+            return StatusCode(bindResult);
+
+        }
 
 
 
