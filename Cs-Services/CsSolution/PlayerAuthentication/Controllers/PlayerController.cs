@@ -53,9 +53,9 @@ namespace AuthoritativeGameMechanics.Controllers
         public IActionResult BindService(string authToken,string userName, string serviceId, string serviceEmail)
         {
             PlayerAuthenticationInput input = new PlayerAuthenticationInput(authToken, userName, serviceId, serviceEmail);
-            int bindResult = _mediator.BindServiceToPlayer(input);
+            var (bindResult,progress) = _mediator.BindServiceToPlayer(input);
 
-            return StatusCode(bindResult);
+            return StatusCode(bindResult,progress);
 
         }
 

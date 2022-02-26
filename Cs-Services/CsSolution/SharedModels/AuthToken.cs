@@ -13,12 +13,14 @@ namespace SharedModels
         [BsonId]
         public ObjectId ObjectId;
         public string Token;
+        public ObjectId PlayerId;
         public DateTime InitiationDate;
 
-        public AuthToken(ObjectId objectId, string token, DateTime initiationDate)
+        public AuthToken(ObjectId objectId, string token, ObjectId playerId, DateTime initiationDate)
         {
             ObjectId = objectId;
             Token = token;
+            PlayerId = playerId;
             InitiationDate = initiationDate;
         }
     }

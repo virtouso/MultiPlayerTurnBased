@@ -13,16 +13,16 @@ namespace SharedModels
     {
 
         public Identity PlayerIdentity;
-        public List<Service> Services;
+        public Service GooglePlay;
         public Progress PlayerProgress;
         public bool IsGuest;
-        public Player(Identity playerIdentity, Progress playerProgress, Service service)
+        public Player(Identity playerIdentity, Progress playerProgress, Service googlePlay)
         {
             PlayerIdentity = playerIdentity;
             PlayerProgress = playerProgress;
-            AddService(service);
+            GooglePlay = googlePlay;
 
-            IsGuest = (!Services?.Any() != true) ? true : false;
+            IsGuest = (GooglePlay is null) ? true : false;
         }
 
 
@@ -32,26 +32,20 @@ namespace SharedModels
         {
             [BsonId]
             public ObjectId Id;
-           
+
             public string UniqueName;
 
             public Identity()
             {
 
             }
-            public Identity( string uniqueName)
+            public Identity(string uniqueName)
             {
                 UniqueName = uniqueName;
             }
         }
 
 
-        public void AddService(Service service)
-        {
-            if (Services is null)
-                Services = new List<Service>();
-            Services.Add(service);
-        }
         public class Service
         {
             string Id;

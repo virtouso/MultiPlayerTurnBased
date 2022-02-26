@@ -5,6 +5,7 @@ using PlayerAuthentication.Models;
 using SharedModels;
 using SharedModels.General;
 using SharedModels.General.Types;
+using SharedRepository.Models;
 using SharedRepository.Repository.RedisRepository.References;
 
 namespace SharedRepository
@@ -20,18 +21,38 @@ namespace SharedRepository
             _dataBase = _mongoClient.GetDatabase(databaseName);
         }
 
-        public async Task<ReturnData<string>> GetTokenForGuestPlayer(Player.Tracking.Device deviceInfo, Player.Progress initialProgress)
+
+
+
+
+        public async Task<(ResponseType, Player.Progress)> AddServiceToPlayer(string authToken, Player.Service service)
         {
-            var playerCollection = _dataBase.GetCollection<Player>(CollectionNames.Player);
-            Player player = new Player(new Player.Identity(), new Player.Tracking(deviceInfo), initialProgress);
-            await playerCollection.InsertOneAsync(player);
-
-            AuthToken token = new AuthToken(player.PlayerIdentity.Id,new ObjectId());
-
             var tokenCollection = _dataBase.GetCollection<AuthToken>(CollectionNames.Token);
-            await tokenCollection.InsertOneAsync(token);
 
-            return new ReturnData<string>(token.TokenId.ToString());
+            var tokenFilter = Builders<AuthToken>.Filter.Eq(nameof(AuthToken.Token), authToken);
+            var relatedDocument = tokenCollection.Find(tokenFilter).First();
+            ObjectId playerId = relatedDocument.PlayerId;
+
+
+            var playerCollection = _dataBase.GetCollection<Player>(CollectionNames.Player);
+            var playerFilter = Builders<Player>.Filter.Eq("_id", playerId);
+
+            var relatedPlayer = playerCollection.Find(playerFilter).First();
+            relatedPlayer.AddService(service);
+            playerCollection.ReplaceOne(playerFilter, relatedPlayer);
+            return (ResponseType.Success, relatedPlayer.PlayerProgress);
+        }
+
+
+
+        public async Task<(ResponseType, string)> GetTokenForInitialPlayer(Player.Identity identity, Player.Service service, Player.Progress initialProgress)
+        {
+           
+       
+                Player player= new Player(identity,initialProgress,service);
+            
+
+
         }
     }
 }
