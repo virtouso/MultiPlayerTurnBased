@@ -1,6 +1,8 @@
 using PlayerAuthentication.Mediator;
 using SharedRepository;
 using Microsoft.Extensions.Configuration;
+using SharedUtility.Jwt;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,6 +12,7 @@ builder.Services.AddControllersWithViews();
 
 
 builder.Services.AddSingleton<IPlayerAuthenticationMediator, PlayerAuthenticationMediator>();
+builder.Services.AddSingleton<IJwtHelper,JwtHelper>();
 builder.Services.AddHealthChecks();
 
 string mongoUserName = builder.Configuration.GetValue<string>("Mongo:UserName");
