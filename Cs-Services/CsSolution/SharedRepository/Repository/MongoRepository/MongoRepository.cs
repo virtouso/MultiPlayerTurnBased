@@ -25,32 +25,42 @@ namespace SharedRepository
 
 
 
-        public async Task<(ResponseType, Player.Progress)> AddServiceToPlayer(string authToken, Player.Service service)
+        public async Task<(ResponseType, Player.Progress)> AddServiceToPlayer(ObjectId id, Player.Service service)
         {
-            var tokenCollection = _dataBase.GetCollection<AuthToken>(CollectionNames.Token);
-
-            var tokenFilter = Builders<AuthToken>.Filter.Eq(nameof(AuthToken.Token), authToken);
-            var relatedDocument = tokenCollection.Find(tokenFilter).First();
-            ObjectId playerId = relatedDocument.PlayerId;
-
 
             var playerCollection = _dataBase.GetCollection<Player>(CollectionNames.Player);
-            var playerFilter = Builders<Player>.Filter.Eq("_id", playerId);
+            var playerFilter = Builders<Player>.Filter.Eq("_id", id);
 
             var relatedPlayer = playerCollection.Find(playerFilter).First();
-            relatedPlayer.AddService(service);
+            relatedPlayer.GooglePlay = service;
             playerCollection.ReplaceOne(playerFilter, relatedPlayer);
             return (ResponseType.Success, relatedPlayer.PlayerProgress);
         }
 
 
 
-        public async Task<(ResponseType, string)> GetTokenForInitialPlayer(Player.Identity identity, Player.Service service, Player.Progress initialProgress)
+        public async Task<(ResponseType, ObjectId, Player.Progress)> GetTokenForInitialPlayer(Player.Identity identity, Player.Service service, Player.Progress initialProgress)
         {
-           
-       
-                Player player= new Player(identity,initialProgress,service);
-            
+
+            Player initPlayer = new Player(identity, initialProgress, service);
+
+            bool hasService = service != null;
+            Player foundPlayer = null;
+            var playerCollection = _dataBase.GetCollection<Player>(CollectionNames.Player);
+            if (hasService)
+            {
+                var playerFilter = Builders<Player>.Filter.Eq("GooglePlayService.Id", service.Id);
+                foundPlayer = playerCollection.Find(playerFilter).First();
+            }
+
+            if (foundPlayer != null)
+            {
+                return (ResponseType.Success, foundPlayer.PlayerIdentity.Id, foundPlayer.PlayerProgress);
+            }
+
+            playerCollection.InsertOne(initPlayer);
+
+            return (ResponseType.Success,initPlayer.PlayerIdentity.Id,initPlayer.PlayerProgress);
 
 
         }

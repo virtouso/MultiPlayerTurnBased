@@ -1,4 +1,5 @@
-﻿using PlayerAuthentication.Models;
+﻿using MongoDB.Bson;
+using PlayerAuthentication.Models;
 using SharedModels;
 using SharedModels.General;
 using SharedModels.General.Types;
@@ -9,9 +10,9 @@ namespace SharedRepository
 {
     public interface IMongoRepository
     {
-        public  Task<(ResponseType, string)> GetTokenForInitialPlayer(Identity identity,Service service , Progress initialProgress);
+        public Task<(ResponseType, ObjectId, Progress)> GetTokenForInitialPlayer(Identity identity, Service service, Progress initialProgress);
 
-        public Task<(ResponseType, Progress)> AddServiceToPlayer(string authToken ,Service service);
+        public Task<(ResponseType, Progress)> AddServiceToPlayer(ObjectId userId, Service service);
 
     }
 }

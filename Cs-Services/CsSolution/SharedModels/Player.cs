@@ -48,8 +48,8 @@ namespace SharedModels
 
         public class Service
         {
-            string Id;
-            String Email;
+            public string Id;
+            public string Email;
 
             public Service(string id, string email)
             {
