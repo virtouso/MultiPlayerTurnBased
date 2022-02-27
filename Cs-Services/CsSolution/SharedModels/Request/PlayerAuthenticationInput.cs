@@ -24,6 +24,11 @@ namespace PlayerAuthentication.Models
             JwtToken = jwtToken;
         }
 
+        public PlayerAuthenticationInput()
+        {
+
+        }
+
         public class Validator : AbstractValidator<PlayerAuthenticationInput>
         {
             public Validator()

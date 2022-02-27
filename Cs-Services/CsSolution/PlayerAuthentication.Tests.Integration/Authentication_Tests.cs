@@ -27,31 +27,76 @@ namespace PlayerAuthentication.Tests.Integration
 
 
         [Fact]
-        public async Task InitGuest_ReturnOk()
+        public async Task TestJwt_ReturnOk()
         {
-           
-            var content = new FormUrlEncodedContent(new[]
-      {
-                new KeyValuePair<string, string>("Id", "123123"),
-                new KeyValuePair<string, string>("UserName", "moeen"),
-                new KeyValuePair<string, string>("GooglePlayId", "123123"),
-                new KeyValuePair<string, string>("Password", "123123"),
-                new KeyValuePair<string, string>("DeviceId", "123123123123123")
+            var content = new FormUrlEncodedContent(new[] { new KeyValuePair<string, string>("userName", "6212b3dae6f1a74b1457bdca") });
+            var response = await _httpClient.PostAsync("/TestJwt", content);
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
 
+        [Fact]
+        public async Task TestJwt_ExpectedValue()
+        {
+
+            string key = "userName";
+            string value = "6212b3dae6f1a74b1457bdca";
+
+            var content = new FormUrlEncodedContent(new[] { new KeyValuePair<string, string>(key, value) });
+            var response = await _httpClient.PostAsync("/TestJwt", content);
+
+            var responseString = await response.Content.ReadAsStringAsync();
+            Assert.NotNull(responseString);
+            Assert.Equal(value, responseString);
+        }
+
+
+        [Fact]
+        public async Task InitPlayer_ReturnOk_Guest()
+        {
+            var content = new FormUrlEncodedContent(new[] { 
+                new KeyValuePair<string, string>( "guest", "true"),
+            new KeyValuePair<string, string>( "serviceId", "6212b3dae6f1a74b1457bdca"),
+            new KeyValuePair<string, string>( "authToken", "6212b3dae6f1a74b1457bdca3123214dsads213sa2132dsa13211dasasd321321fdsfsdfds"),
+            new KeyValuePair<string, string>( "serviceEmail", "test@email.com"),
+            new KeyValuePair<string, string>( "userName", "moeen"),
 
             });
-            var response = await _httpClient.PostAsync("/InitGuestPlayer",content);
+
+            var response = await _httpClient.PostAsync("/InitPlayer", content);
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
 
 
         [Fact]
-        public async Task InitGuest_ResponseNotNullOrEmpty()
+        public async Task InitPlayer_ReturnOk_Permanent()
         {
-            var response = await _httpClient.GetAsync("/InitGuestPlayer");
-            var responseString = await response.Content.ReadAsStringAsync();
-            Assert.NotNull(responseString);
-            Assert.NotEqual("", responseString);
+            var content = new FormUrlEncodedContent(new[] {
+                new KeyValuePair<string, string>( "guest", "false"),
+            new KeyValuePair<string, string>( "serviceId", "6212b3dae6f1a74b1457bdca"),
+            new KeyValuePair<string, string>( "authToken", "6212b3dae6f1a74b1457bdca3123214dsads213sa2132dsa13211dasasd321321fdsfsdfds"),
+            new KeyValuePair<string, string>( "serviceEmail", "test@email.com"),
+            new KeyValuePair<string, string>( "userName", "moeen"),
+            });
+
+            var response = await _httpClient.PostAsync("/InitPlayer", content);
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+
+        [Fact]
+        public async Task BindService_ReturnOk()
+        {
+            var content = new FormUrlEncodedContent(new[] {
+            new KeyValuePair<string, string>( "serviceId", "6212b3dae6f1a74b1457bdca"),
+            new KeyValuePair<string, string>( "authToken", "6212b3dae6f1a74b1457bdca3123214dsads213sa2132dsa13211dasasd321321fdsfsdfds"),
+            new KeyValuePair<string, string>( "serviceEmail", "test@email.com"),
+            new KeyValuePair<string, string>( "userName", "moeen"),
+            });
+
+            var response = await _httpClient.PostAsync("/BindService", content);
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+
         }
 
 

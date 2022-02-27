@@ -67,7 +67,7 @@ namespace AuthoritativeGameMechanics.Controllers
 
 
 
-        [HttpPost("BindService")]
+        [HttpPost("/BindService")]
         public IActionResult BindService(string authToken, string userName, string serviceId, string serviceEmail)
         {
             Request.Headers.TryGetValue("Auth", out var authKey);
