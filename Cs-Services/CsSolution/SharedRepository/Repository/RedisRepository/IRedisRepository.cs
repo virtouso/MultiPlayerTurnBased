@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SharedRepository.Repository.RedisRepository
 {
-    internal interface IRedisRepository
+    public interface IRedisRepository
     {
         bool SetKeyValue(string key, string value);
         bool GetValue(string key, out string value);

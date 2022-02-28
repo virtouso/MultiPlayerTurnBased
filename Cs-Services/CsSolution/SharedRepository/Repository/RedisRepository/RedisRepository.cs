@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SharedRepository.Repository.RedisRepository
 {
-    internal class RedisRepository : IRedisRepository
+    public class RedisRepository : IRedisRepository
     {
 
 
