@@ -2,6 +2,8 @@ using PlayerAuthentication.Mediator;
 using SharedRepository;
 using Microsoft.Extensions.Configuration;
 using SharedUtility.Jwt;
+using SharedRepository.Repository.SqlRepository.EntityFrameworkdRepository;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +13,8 @@ builder.Services.AddControllersWithViews();
 
 
 
-builder.Services.AddSingleton<IPlayerAuthenticationMediator, PlayerAuthenticationMediator>();
-builder.Services.AddSingleton<IJwtHelper,JwtHelper>();
+builder.Services.AddScoped<IPlayerAuthenticationMediator, PlayerAuthenticationMediator>();
+builder.Services.AddScoped<IJwtHelper,JwtHelper>();
 builder.Services.AddHealthChecks();
 
 string mongoUserName = builder.Configuration.GetValue<string>("Mongo:UserName");
@@ -21,6 +23,10 @@ string mongoServer = builder.Configuration.GetValue<string>("Mongo:Server");
 string mongoDatabase = builder.Configuration.GetValue<string>("Mongo:DatabaseName");
 
 builder.Services.AddSingleton(typeof(IMongoRepository), new MongoRepository(mongoUserName, mongoPassword, mongoServer, mongoDatabase));
+
+
+//string PostgreSqlConnectionString = builder.Configuration.GetConnectionString("PostgreSql");
+builder.Services.AddDbContext<MultiPlayerTurnBasedContext>(o=>o.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSql")));
 
 var app = builder.Build();
 
@@ -40,7 +46,6 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapHealthChecks("/healthCheck");
-
 
 
 app.Run();

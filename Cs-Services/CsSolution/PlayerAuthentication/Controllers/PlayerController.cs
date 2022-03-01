@@ -48,8 +48,8 @@ namespace AuthoritativeGameMechanics.Controllers
             PlayerAuthenticationInput input = new PlayerAuthenticationInput(authToken, userName, serviceId, servceEmail, authKey);
             var validation = input.ModelValidator.Validate(input);
 
-            if (!validation.IsValid)
-                return BadRequest();
+            //if (!validation.IsValid)
+            //    return BadRequest();
 
             if (guest)
             {

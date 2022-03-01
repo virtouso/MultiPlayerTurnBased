@@ -6,6 +6,7 @@ using static SharedModels.Player;
 using Newtonsoft.Json;
 using SharedUtility.Jwt;
 using MongoDB.Bson;
+using SharedRepository.Repository.SqlRepository.EntityFrameworkdRepository;
 
 namespace PlayerAuthentication.Mediator
 {
@@ -13,13 +14,14 @@ namespace PlayerAuthentication.Mediator
     {
         private readonly IMongoRepository _repository;
         private readonly IJwtHelper _jwtHelper;
-
-        public PlayerAuthenticationMediator(IMongoRepository mongoRepository, IJwtHelper jwtHelper)
+        private readonly MultiPlayerTurnBasedContext _dbContext;
+        public PlayerAuthenticationMediator(IMongoRepository mongoRepository, IJwtHelper jwtHelper, MultiPlayerTurnBasedContext dbContext)
         {
             _repository = mongoRepository;
             _jwtHelper = jwtHelper;
+            _dbContext = dbContext;
         }
-
+         
         public (int, string) BindServiceToPlayer(PlayerAuthenticationInput inputData)
         {
             ObjectId? id = _jwtHelper.ValidateJwtToken(inputData.TokenId);
@@ -43,7 +45,10 @@ namespace PlayerAuthentication.Mediator
         {
 
             // todo should be moved to database
-            Player.Progress progress = new Player.Progress(20, 100, 0, 0);
+
+            InitialProgress initialProgress= this._dbContext.InitialProgress.First();
+
+            Player.Progress progress = new Player.Progress(initialProgress.Gold, initialProgress.Silver, initialProgress.Level, initialProgress.Experience);
             Identity identity = new Identity();
             Service service = null;
             var result = _repository.GetTokenForInitialPlayer(identity, service, progress).Result;

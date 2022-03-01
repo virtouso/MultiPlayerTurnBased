@@ -9,10 +9,19 @@ namespace SharedRepository.Repository.SqlRepository.EntityFrameworkdRepository
 {
     public class MultiPlayerTurnBasedContext : DbContext
     {
-        public DbSet<InitialProgress> InitialProgress{ get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseNpgsql("Host=localhost;Database=multiplayer_turnbased;Username=moeen;Password=moeen777");
-      
+        public MultiPlayerTurnBasedContext(DbContextOptions options) : base(options)
+        {
+
+        }
+
+
+    public DbSet<InitialProgress> InitialProgress{ get; set; }
+
+     protected override void  OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.UseSerialColumns();
+        } 
 
     }
 }
