@@ -6,6 +6,8 @@ var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
 
-app.MapHub<MatchMakingHub>("/match");
+app.MapHub<MatchHub>("/match");
+app.MapHub<LobbyHub>("/lobby");
+
 
 app.Run();
