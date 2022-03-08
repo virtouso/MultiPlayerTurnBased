@@ -5,16 +5,24 @@ using UnityEngine;
 
 namespace TurnBasedMultiPlayer
 {
-    namespace Enum
+    namespace Enums
     {
         namespace Backend
         {
-            public enum BackendType
+            public enum BackendTypes
             {
                 LocalHost,
                 Test,
                 Production
             }
+
+
+            public enum BackendRequestNames
+            {
+                
+            }
+            
+            
         }
     }
 }
