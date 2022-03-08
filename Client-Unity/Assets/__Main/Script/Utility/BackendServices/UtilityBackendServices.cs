@@ -14,7 +14,7 @@ namespace Utility
             
         }
 
-        public class UtilityBackendServices
+        public class UtilityBackendServices:IUtilityBackendServices
         {
             [Inject] private BackendRoutes _backendRoutes;
 

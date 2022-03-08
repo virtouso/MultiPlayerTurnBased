@@ -28,6 +28,7 @@ namespace TurnBasedMultiPlayer
 
             public enum StoreType
             {
+                Editor,
                 GooglePlay,
                 AppStore,
                 CafeBazaar,

@@ -34,13 +34,13 @@ namespace Configuration
                         Requests = new Dictionary<BackendRequestNames, ServerRequest>(_serverRequestsList.Count);
                         foreach (var item in _serverRequestsList)
                         {
-                            Requests.Add(item.RequestName,item);
+                            Requests.Add(item.RequestName, item);
                         }
                     }
 
-
-                    public BackendUrl SelectedBackendUrl;
-                    public Dictionary<BackendRequestNames, ServerRequest> Requests;
+                    [SerializeField] private string _name;
+                    [HideInInspector] public BackendUrl SelectedBackendUrl;
+                    [HideInInspector] public Dictionary<BackendRequestNames, ServerRequest> Requests;
 
                     [SerializeField] private List<BackendUrl> _urlList;
                     [SerializeField] private List<ServerRequest> _serverRequestsList;
@@ -53,7 +53,7 @@ namespace Configuration
                         [SerializeField] public string Url;
                     }
 
-
+                    [Serializable]
                     public class ServerRequest
                     {
                         [SerializeField] public BackendRequestNames RequestName;

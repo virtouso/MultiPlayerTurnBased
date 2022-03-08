@@ -10,7 +10,7 @@ namespace Mvc
         public T Model;
         protected M Controller;
 
-        public virtual void Awake()
+        protected virtual void Awake()
         {
             Controller = new  M();
             Controller.Setup(Model);
