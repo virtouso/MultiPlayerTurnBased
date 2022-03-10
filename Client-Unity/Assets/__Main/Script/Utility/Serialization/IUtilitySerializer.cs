@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Panzers.Utility
+namespace Utility.Serialization
 {
      public interface IUtilitySerializer
      {

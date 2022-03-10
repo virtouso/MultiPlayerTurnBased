@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 
-namespace Panzers.Utility
+namespace Utility.Serialization
 {
     public class UtilityNewtonSoftJson : IUtilitySerializer
     {

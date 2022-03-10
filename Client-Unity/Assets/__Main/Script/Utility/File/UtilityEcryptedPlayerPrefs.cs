@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Panzers.Utility
+namespace Utility.File
 {
     public class UtilityEcryptedPlayerPrefs : IUtilityFile
     {

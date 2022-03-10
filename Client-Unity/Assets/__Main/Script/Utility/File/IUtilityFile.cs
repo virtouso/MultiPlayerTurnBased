@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Panzers.Utility
+namespace Utility.File
 {
     public interface IUtilityFile
     {
@@ -16,6 +16,5 @@ namespace Panzers.Utility
 
         void SaveFloat(string key, float value);
         float LoadFloat(string key);
-
     }
 }
