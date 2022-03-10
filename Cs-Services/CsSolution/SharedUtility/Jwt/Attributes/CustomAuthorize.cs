@@ -13,10 +13,10 @@ namespace SharedUtility.Jwt.Attributes
 
         public string FiltersList;
 
-        IJwtHelper jwtHelper;
+        IJwtHelper _jwtHelper;
         public CustomAuthorize(IJwtHelper jwtHelper)
         {
-            this.jwtHelper = jwtHelper;
+            this._jwtHelper = jwtHelper;
         }
 
 
@@ -35,7 +35,7 @@ namespace SharedUtility.Jwt.Attributes
 
             string authData = context.HttpContext.Request.Headers[SharedReferences.RequestHeaderKeys.AuthData];
 
-            var result = jwtHelper.ValidateJwtToken(authData);
+            var result = _jwtHelper.ValidateJwtToken(authData);
 
             if (result.Item1==null)
             {
