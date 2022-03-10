@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BuildConfigurations
   m_EditorClassIdentifier: 
   _selectedBuildType: 0
-  _selectedPlatformType: 0
+  _selectedPlatformType: 3
   _selectedStoreType: 0

@@ -19,7 +19,7 @@ namespace TurnBasedMultiPlayer
 
             public enum BackendRequestNames
             {
-                
+                Login
             }
             
             

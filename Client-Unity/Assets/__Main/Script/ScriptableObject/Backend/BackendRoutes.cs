@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Configuration.Enums;
 using TurnBasedMultiPlayer.Enums.Backend;
 using UnityEngine;
 
@@ -15,14 +16,16 @@ namespace Configuration
             {
                 public void Initialize(BackendTypes selectedBackendType)
                 {
-                    foreach (var item in BackendServices)
+                    BackendServices = new Dictionary<ServiceNames, BackendService>(_backendServices.Count);
+                    foreach (var item in _backendServices)
                     {
                         item.Init(selectedBackendType);
+                        BackendServices.Add(item._serviceName, item);
                     }
                 }
 
-
-                [SerializeField] private List<BackendService> BackendServices;
+                public Dictionary<ServiceNames, BackendService> BackendServices;
+                [SerializeField] private List<BackendService> _backendServices;
 
 
                 [System.Serializable]
@@ -38,7 +41,7 @@ namespace Configuration
                         }
                     }
 
-                    [SerializeField] private string _name;
+                    [SerializeField] public ServiceNames _serviceName;
                     [HideInInspector] public BackendUrl SelectedBackendUrl;
                     [HideInInspector] public Dictionary<BackendRequestNames, ServerRequest> Requests;
 
@@ -63,6 +66,17 @@ namespace Configuration
                     }
                 }
             }
+        }
+    }
+
+    namespace Enums
+    {
+        public enum ServiceNames
+        {
+            PlayerAuthentication,
+            LeaderBoard,
+            MatchMaking,
+            AuthoritativeGamePlay
         }
     }
 }
