@@ -41,17 +41,21 @@ namespace AuthoritativeGameMechanics.Controllers
 
 
         [HttpPost("/InitPlayer")]
-        public IActionResult InitPlayer(bool guest, string authToken, string serviceId, string servceEmail, string userName)
+        public IActionResult InitPlayer(bool isGuest, string authToken, string serviceId, string servceEmail, string userName)
         {
+
+
+
+
             Request.Headers.TryGetValue("Auth", out var authKey);
 
             PlayerAuthenticationInput input = new PlayerAuthenticationInput(authToken, userName, serviceId, servceEmail, authKey);
             var validation = input.ModelValidator.Validate(input);
 
-            //if (!validation.IsValid)
-            //    return BadRequest();
+            if (!validation.IsValid)
+                return BadRequest();
 
-            if (guest)
+            if (isGuest)
             {
                 (int, string, Progress) guestResult = _mediator.InitPlayerAsGuest(input);
                 Response.Headers.Add("Auth-Bearer", guestResult.Item2);

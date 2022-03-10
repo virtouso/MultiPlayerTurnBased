@@ -47,7 +47,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatchServer.Tests", "MatchS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerAuthentication.Tests", "PlayerAuthentication.Tests\PlayerAuthentication.Tests.csproj", "{9CB68932-5370-4CF8-8E29-1A633FB1632B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeaderBoard.Tests.Integration", "LeaderBoard.Tests.Integration\LeaderBoard.Tests.Integration.csproj", "{F8A5A407-EB9F-4B33-B70C-AE477D9C11C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaderBoard.Tests.Integration", "LeaderBoard.Tests.Integration\LeaderBoard.Tests.Integration.csproj", "{F8A5A407-EB9F-4B33-B70C-AE477D9C11C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedReferences", "SharedReferences\SharedReferences.csproj", "{5015C152-A193-42B9-854C-C75080BF4086}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,6 +109,10 @@ Global
 		{F8A5A407-EB9F-4B33-B70C-AE477D9C11C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8A5A407-EB9F-4B33-B70C-AE477D9C11C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8A5A407-EB9F-4B33-B70C-AE477D9C11C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5015C152-A193-42B9-854C-C75080BF4086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5015C152-A193-42B9-854C-C75080BF4086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5015C152-A193-42B9-854C-C75080BF4086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5015C152-A193-42B9-854C-C75080BF4086}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
