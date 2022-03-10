@@ -41,15 +41,18 @@ namespace AuthoritativeGameMechanics.Controllers
 
 
         [HttpPost("/InitPlayer")]
-        public IActionResult InitPlayer(bool isGuest, string authToken, string serviceId, string servceEmail, string userName)
+        public IActionResult InitPlayer(  )
         {
 
+            bool isGuest =bool.Parse( HttpContext.Request.Form[SharedReferences.RequestFieldNames.IsGuest]);
+            string tokenId = HttpContext.Request.Form[SharedReferences.RequestFieldNames.TokenId];
+            string userId = HttpContext.Request.Form[SharedReferences.RequestFieldNames.UserId];
+            string email = HttpContext.Request.Form[SharedReferences.RequestFieldNames.Email];
+            string authCode = HttpContext.Request.Form[SharedReferences.RequestFieldNames.AuthCode];
 
+           
 
-
-            Request.Headers.TryGetValue("Auth", out var authKey);
-
-            PlayerAuthenticationInput input = new PlayerAuthenticationInput(authToken, userName, serviceId, servceEmail, authKey);
+            PlayerAuthenticationInput input = new PlayerAuthenticationInput(isGuest,tokenId,userId,email,authCode);
             var validation = input.ModelValidator.Validate(input);
 
             if (!validation.IsValid)
@@ -58,29 +61,19 @@ namespace AuthoritativeGameMechanics.Controllers
             if (isGuest)
             {
                 (int, string, Progress) guestResult = _mediator.InitPlayerAsGuest(input);
-                Response.Headers.Add("Auth-Bearer", guestResult.Item2);
+                Response.Headers.Add(SharedReferences.ResponseHeaderKeys.JwtToken, guestResult.Item2);
                 return StatusCode(guestResult.Item1, guestResult.Item3);
             }
 
             // not guest
             (int, string, Progress) permanentResult = _mediator.InitPlayerWithService(input);
-            Response.Headers.Add("Auth-Bearer", permanentResult.Item2);
+            Response.Headers.Add(SharedReferences.ResponseHeaderKeys.JwtToken, permanentResult.Item2);
             return StatusCode(permanentResult.Item1, permanentResult.Item3);
 
         }
 
 
 
-        [HttpPost("/BindService")]
-        public IActionResult BindService(string authToken, string userName, string serviceId, string serviceEmail)
-        {
-            Request.Headers.TryGetValue("Auth", out var authKey);
-            PlayerAuthenticationInput input = new PlayerAuthenticationInput(authToken, userName, serviceId, serviceEmail, authKey);
-            var (bindResult, progress) = _mediator.BindServiceToPlayer(input);
-
-            return StatusCode(bindResult, progress);
-
-        }
 
 
 

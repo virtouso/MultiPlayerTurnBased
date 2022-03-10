@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace SharedReferences
 {
-    public class RequestHeaderKeys
+    public static class ResponseHeaderKeys
     {
-        public static string AuthData = "auth_data";
-        public static string UserId = "user_id";
-
+        public static string JwtToken = "jwt_token";
     }
 }

@@ -22,21 +22,7 @@ namespace PlayerAuthentication.Mediator
             _dbContext = dbContext;
         }
          
-        public (int, string) BindServiceToPlayer(PlayerAuthenticationInput inputData)
-        {
-            ObjectId? id = _jwtHelper.ValidateJwtToken(inputData.TokenId);
-
-            if (id is null)
-                return (400, null);
-
-            var result = _repository.AddServiceToPlayer(ObjectId.Parse(inputData.TokenId), new Service(inputData.ServiceId, inputData.Email));
-            if (result.Result.Item1 == SharedRepository.Models.ResponseType.Success)
-            {
-                return (200, JsonConvert.SerializeObject(result.Result.Item2));
-            }
-
-            return (500, null);
-        }
+   
 
 
 
@@ -44,14 +30,14 @@ namespace PlayerAuthentication.Mediator
         public (int, string, Progress) InitPlayerAsGuest(PlayerAuthenticationInput inputData)
         {
 
-            // todo should be moved to database
+           
 
             InitialProgress initialProgress= this._dbContext.InitialProgress.First();
 
             Player.Progress progress = new Player.Progress(initialProgress.Gold, initialProgress.Silver, initialProgress.Level, initialProgress.Experience);
             Identity identity = new Identity();
-            Service service = null;
-            var result = _repository.GetTokenForInitialPlayer(identity, service, progress).Result;
+         
+            var result = _repository.GetTokenForInitialPlayer(inputData.IsGuest,identity,  progress).Result;
 
             if (result.Item1 == SharedRepository.Models.ResponseType.Success)
             {
@@ -67,10 +53,11 @@ namespace PlayerAuthentication.Mediator
 
         public (int, string, Progress) InitPlayerWithService(PlayerAuthenticationInput inputData)
         {
-            Player.Progress progress = new Player.Progress(20, 100, 0, 0);
+            InitialProgress initialProgress = this._dbContext.InitialProgress.First();
             Identity identity = new Identity();
-            Service service = new Service(inputData.ServiceId, inputData.Email);
-            var result = _repository.GetTokenForInitialPlayer(identity, service, progress).Result;
+            Player.Progress progress = new Player.Progress(initialProgress.Gold, initialProgress.Silver, initialProgress.Level, initialProgress.Experience);
+
+            var result = _repository.GetTokenForInitialPlayer(identity, progress).Result;
             if (result.Item1 == SharedRepository.Models.ResponseType.Success)
             {
                 return (200, result.Item2.ToString(), result.Item3);

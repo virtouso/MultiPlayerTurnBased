@@ -8,7 +8,6 @@ namespace PlayerAuthentication.Mediator
     {
         (int, string,Progress ) InitPlayerAsGuest(PlayerAuthenticationInput inputData);
         (int, string, Progress) InitPlayerWithService(PlayerAuthenticationInput inputData);
-        (int, string) BindServiceToPlayer(PlayerAuthenticationInput inputData);
 
     }
 }

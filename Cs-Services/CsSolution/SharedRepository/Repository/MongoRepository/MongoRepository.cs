@@ -25,31 +25,17 @@ namespace SharedRepository
 
 
 
-        public async Task<(ResponseType, Player.Progress)> AddServiceToPlayer(ObjectId id, Player.Service service)
+        public async Task<(ResponseType, ObjectId, Player.Progress)> GetTokenForInitialPlayer(bool isGuest,Player.Identity identity,  Player.Progress initialProgress)
         {
 
-            var playerCollection = _dataBase.GetCollection<Player>(CollectionNames.Player);
-            var playerFilter = Builders<Player>.Filter.Eq("_id", id);
+            Player initPlayer = new Player(identity, initialProgress);
 
-            var relatedPlayer = playerCollection.Find(playerFilter).First();
-            relatedPlayer.GooglePlay = service;
-            playerCollection.ReplaceOne(playerFilter, relatedPlayer);
-            return (ResponseType.Success, relatedPlayer.PlayerProgress);
-        }
-
-
-
-        public async Task<(ResponseType, ObjectId, Player.Progress)> GetTokenForInitialPlayer(Player.Identity identity, Player.Service service, Player.Progress initialProgress)
-        {
-
-            Player initPlayer = new Player(identity, initialProgress, service);
-
-            bool hasService = service != null;
+          
             Player foundPlayer = null;
             var playerCollection = _dataBase.GetCollection<Player>(CollectionNames.Player);
-            if (hasService)
+            if (isGuest)
             {
-                var playerFilter = Builders<Player>.Filter.Eq("GooglePlayService.Id", service.Id);
+                var playerFilter = Builders<Player>.Filter.Eq("GooglePlayService.Id", );
                 foundPlayer = playerCollection.Find(playerFilter).First();
             }
 

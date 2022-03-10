@@ -8,6 +8,9 @@ using SharedUtility.Jwt;
 using MongoDB.Bson;
 using SharedModels;
 using SharedRepository.Models;
+using SharedRepository.Repository.SqlRepository.EntityFrameworkdRepository;
+
+
 
 namespace PlayerAuthentication.Tests.StepDefinitions
 {
@@ -32,12 +35,10 @@ namespace PlayerAuthentication.Tests.StepDefinitions
             _jwtHelper = Substitute.For<IJwtHelper>();
             _defaultProgress = new Player.Progress(10, 10, 10, 10);
             _jwtHelper.GenerateJwtToken(ObjectId.Parse(_jwtToken)).Returns("1234567");
-            _mongoRepository.AddServiceToPlayer(ObjectId.Parse(_jwtToken),
-                new Player.Service("6212b3dae6f1a74b1457bdca", "test@email.com")).Returns((ResponseType.Success, _defaultProgress));
+            
 
 
-
-            _mediator = new PlayerAuthenticationMediator(_mongoRepository, _jwtHelper);
+     
 
         }
 
@@ -48,7 +49,7 @@ namespace PlayerAuthentication.Tests.StepDefinitions
         [Given(@"Auth Token Not Exist")]
         public void GivenAuthTokenNotExist()
         {
-            _testInput.JwtToken = null;
+            _testInput.AuthCode = null;
 
         }
 
@@ -79,14 +80,14 @@ namespace PlayerAuthentication.Tests.StepDefinitions
         [Given(@"Auth Token Exist")]
         public void GivenAuthTokenExist()
         {
-            _testInput.JwtToken = _jwtToken;
+            _testInput.AuthCode = _jwtToken;
             _testInput.Email = "test@email.com";
         }
 
         [Given(@"Auth Token Is Not Expired")]
         public void GivenAuthTokenIsNotExpired()
         {
-            var validated = _jwtHelper.ValidateJwtToken(_testInput.JwtToken);
+            var validated = _jwtHelper.ValidateJwtToken(_testInput.AuthCode);
 
         }
 
@@ -106,14 +107,14 @@ namespace PlayerAuthentication.Tests.StepDefinitions
         [Given(@"Auth Token Is Null")]
         public void GivenAuthTokenIsNull()
         {
-            _testInput.JwtToken = null;
+            _testInput.AuthCode = null;
         }
 
         [Given(@"No Service Id Is Sent")]
         public void GivenNoServiceIdIsSent()
         {
             _testInput.Email = null;
-            _testInput.ServiceId = null;
+            _testInput.AuthCode = null;
         }
 
         [When(@"Ask To Initialize Player Data As Guest and Set New Record To Database")]
@@ -139,7 +140,7 @@ namespace PlayerAuthentication.Tests.StepDefinitions
         [Given(@"Service Id Is Not Null")]
         public void GivenServiceIdIsNotNull()
         {
-            _testInput.ServiceId = "1dsa2351dsa33xcxz";
+            _testInput.TokenId = "1dsa2351dsa33xcxz";
         }
 
         [When(@"Try Find Player Record With Id Otherwise Assign New Record For The Player")]

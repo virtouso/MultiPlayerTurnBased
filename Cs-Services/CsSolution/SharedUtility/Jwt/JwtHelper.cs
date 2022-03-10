@@ -30,7 +30,7 @@ namespace SharedUtility.Jwt
             return tokenHandler.WriteToken(token);
         }
 
-        public ObjectId? ValidateJwtToken(string token)
+        public (string,Dictionary<string,string>) ValidateJwtToken(string token)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_secretKey);
@@ -46,15 +46,23 @@ namespace SharedUtility.Jwt
                 }, out SecurityToken validatedToken);
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
-                var accountId = ObjectId.Parse ( jwtToken.Claims.First(x => x.Type == "id").Value);
+                var accountId =  jwtToken.Claims.First(x => x.Type == "id").Value;
+
+                Dictionary<string, string> authorities = new Dictionary<string, string>(jwtToken.Claims.Count());    
+                foreach (var item in jwtToken.Claims)
+                {
+                    if (item.Type == "id") continue;
+                    authorities.Add(item.Type,item.Value);
+
+                }
 
                 
-                return accountId;
+                return (accountId,authorities);
             }
             catch
             {
      
-                return null;
+                return (null,null);
             }
         }
     }

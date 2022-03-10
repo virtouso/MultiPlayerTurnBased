@@ -32,6 +32,17 @@ namespace PreloadScene.Authentications
 
         public void StartGooglePlay()
         {
+           
+            Social.localUser.Authenticate((bool success) =>
+            {
+                if (success)
+                {
+                    string authCode = PlayGamesPlatform.Instance.GetServerAuthCode();
+                    string email = PlayGamesPlatform.Instance.GetUserEmail();
+                    string idToken = PlayGamesPlatform.Instance.GetIdToken();
+                    string userId = PlayGamesPlatform.Instance.GetUserId();
+                }
+            });
         }
     }
 

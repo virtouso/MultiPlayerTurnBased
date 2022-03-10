@@ -5,28 +5,27 @@ namespace PlayerAuthentication.Models
 {
     public class PlayerAuthenticationInput
     {
-
-        public string TokenId;// its the token id
-        public string UniqueName;
-        public string ServiceId;
+        public bool IsGuest;
+        public string TokenId;
+        public string UserId;
         public string Email;
-        public string JwtToken;
-
+        public string AuthCode;
 
         public Validator ModelValidator = new Validator();
 
-        public PlayerAuthenticationInput(string tokenId, string uniqueName, string serviceId, string email, string jwtToken)
-        {
-            TokenId = tokenId;
-            UniqueName = uniqueName;
-            ServiceId = serviceId;
-            Email = email;
-            JwtToken = jwtToken;
-        }
 
         public PlayerAuthenticationInput()
         {
 
+        }
+
+        public PlayerAuthenticationInput(bool isGuest, string tokenId, string userId, string email, string authCode)
+        {
+            IsGuest = isGuest;
+            TokenId = tokenId;
+            UserId = userId;
+            Email = email;
+            AuthCode = authCode;
         }
 
         public class Validator : AbstractValidator<PlayerAuthenticationInput>
@@ -34,10 +33,9 @@ namespace PlayerAuthentication.Models
             public Validator()
             {
                 RuleFor(x => x.TokenId).NotNull().NotEmpty();
-                RuleFor(x => x.UniqueName).NotNull().NotEmpty();
-                RuleFor(x => x.ServiceId).NotNull();
+                RuleFor(x => x.UserId).NotNull().NotEmpty();
                 RuleFor(x => x.Email).NotEmpty().EmailAddress();
-                RuleFor(x=>x.JwtToken).NotNull().NotEmpty();
+                RuleFor(x=>x.AuthCode).NotNull().NotEmpty();
             }
 
 

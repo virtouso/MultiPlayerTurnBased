@@ -11,6 +11,6 @@ namespace SharedUtility.Jwt
    public interface IJwtHelper
     {
         public string GenerateJwtToken(ObjectId userId);
-        public ObjectId? ValidateJwtToken(string token);
+        public (string, Dictionary<string,string>) ValidateJwtToken(string token);
     }
 }

@@ -13,16 +13,14 @@ namespace SharedModels
     {
 
         public Identity PlayerIdentity;
-        public Service GooglePlay;
+      
         public Progress PlayerProgress;
         public bool IsGuest;
-        public Player(Identity playerIdentity, Progress playerProgress, Service googlePlay)
+        public Player(Identity playerIdentity, Progress playerProgress)
         {
             PlayerIdentity = playerIdentity;
             PlayerProgress = playerProgress;
-            GooglePlay = googlePlay;
-
-            IsGuest = (GooglePlay is null) ? true : false;
+         
         }
 
 
@@ -33,30 +31,27 @@ namespace SharedModels
             [BsonId]
             public ObjectId Id;
 
-            public string UniqueName;
+            public string UserId;
+            public string Email;
+            public string TokenId;
+            public string AuthCode;
 
             public Identity()
             {
 
             }
-            public Identity(string uniqueName)
-            {
-                UniqueName = uniqueName;
-            }
-        }
 
-
-        public class Service
-        {
-            public string Id;
-            public string Email;
-
-            public Service(string id, string email)
+            public Identity(ObjectId id, string userId, string email, string tokenId, string authCode)
             {
                 Id = id;
+                UserId = userId;
                 Email = email;
+                TokenId = tokenId;
+                AuthCode = authCode;
             }
         }
+
+
 
 
         public class Progress
