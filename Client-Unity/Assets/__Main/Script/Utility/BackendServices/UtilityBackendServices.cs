@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using Configuration.Backend.General;
 using Configuration.Enums;
 using SharedReferences;
 using TurnBasedMultiPlayer.Enums.Backend;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Networking;
 using Zenject;
 
 
@@ -16,36 +18,39 @@ namespace Utility
     {
         public interface IUtilityBackendServices
         {
-            IObservable<string> AuthorizePlayer(bool isGuest, string userId, string email, string tokenId,
+            IObservable<(UnityWebRequest.Result, string, Dictionary<string, string>)> AuthorizePlayer(bool isGuest,
+                string userId, string email, string tokenId,
                 string authCode);
         }
 
         public class UtilityBackendServices : IUtilityBackendServices
         {
             [Inject] private BackendRoutes _backendRoutes;
+            [Inject] private IUtilityWebRequest _utilityWebRequest;
 
-            public IObservable<string> AuthorizePlayer(bool isGuest, string userId, string email, string tokenId, string authCode)
+            public IObservable<(UnityWebRequest.Result, string, Dictionary<string, string>)> AuthorizePlayer(
+                bool isGuest, string userId, string email, string tokenId,
+                string authCode)
             {
-                WWWForm content = new WWWForm();
+                Dictionary<string, string> content = new Dictionary<string, string>();
                 Dictionary<string, string> headers = new Dictionary<string, string>();
 
-                content.AddField(RequestFieldNames.IsGuest,isGuest.ToString());
-                content.AddField(RequestFieldNames.UserId,userId);
-                content.AddField(RequestFieldNames.Email,email);
-                content.AddField(RequestFieldNames.TokenId,tokenId);
-                content.AddField(RequestFieldNames.AuthCode,authCode);
-                string result = null;
+                content.Add(RequestFieldNames.IsGuest, isGuest.ToString());
+                content.Add(RequestFieldNames.UserId, userId);
+                content.Add(RequestFieldNames.Email, email);
+                content.Add(RequestFieldNames.TokenId, tokenId);
+                content.Add(RequestFieldNames.AuthCode, authCode);
+
+                (UnityWebRequest.Result, string, Dictionary<string, string>) result = (
+                    UnityWebRequest.Result.ConnectionError, null, null);
+
                 string requestUrl = _backendRoutes.BackendServices[ServiceNames.PlayerAuthentication].SelectedBackendUrl
                                         .Url
                                     + _backendRoutes.BackendServices[ServiceNames.PlayerAuthentication]
                                         .Requests[BackendRequestNames.Login]._subQuery;
-                ObservableWWW.Post(requestUrl,
-                        content,
-                        headers)
-                    .Subscribe(
-                        x => { result = x; }
-                    );
-                return Observable.Return(result);
+
+                return _utilityWebRequest.Post(requestUrl, content, headers);
+                
             }
         }
     }

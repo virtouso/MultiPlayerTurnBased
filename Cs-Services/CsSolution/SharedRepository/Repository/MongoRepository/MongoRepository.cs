@@ -29,7 +29,7 @@ namespace SharedRepository
         {
 
             Player initPlayer = new Player(identity, initialProgress);
-
+      
 
             Player foundPlayer = null;
             var playerCollection = _dataBase.GetCollection<Player>(CollectionNames.Player);
@@ -41,12 +41,12 @@ namespace SharedRepository
 
             if (foundPlayer == null || isGuest)
             {
-                return (ResponseType.Success, foundPlayer.PlayerIdentity.Id, foundPlayer.PlayerProgress);
+               
                 playerCollection.InsertOne(initPlayer);
-                return (ResponseType.Success, initPlayer.PlayerIdentity.Id, initPlayer.PlayerProgress);
+                return (ResponseType.Success, initPlayer.Id, initPlayer.PlayerProgress);
             }
 
-            return (ResponseType.Success, foundPlayer.PlayerIdentity.Id, initPlayer.PlayerProgress);
+            return (ResponseType.Success, foundPlayer.Id, initPlayer.PlayerProgress);
 
 
 

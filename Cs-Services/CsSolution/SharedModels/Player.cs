@@ -11,11 +11,12 @@ namespace SharedModels
 {
     public class Player
     {
-
+        [BsonId]
+        public ObjectId Id;
         public Identity PlayerIdentity;
-      
         public Progress PlayerProgress;
         public bool IsGuest;
+
         public Player(Identity playerIdentity, Progress playerProgress)
         {
             PlayerIdentity = playerIdentity;
@@ -28,8 +29,7 @@ namespace SharedModels
 
         public class Identity
         {
-            [BsonId]
-            public ObjectId Id;
+         
 
             public string UserId;
             public string Email;
@@ -41,9 +41,9 @@ namespace SharedModels
 
             }
 
-            public Identity(ObjectId id, string userId, string email, string tokenId, string authCode)
+            public Identity( string userId, string email, string tokenId, string authCode)
             {
-                Id = id;
+               
                 UserId = userId;
                 Email = email;
                 TokenId = tokenId;

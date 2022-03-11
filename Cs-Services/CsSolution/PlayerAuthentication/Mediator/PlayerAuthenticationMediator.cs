@@ -21,8 +21,8 @@ namespace PlayerAuthentication.Mediator
             _jwtHelper = jwtHelper;
             _dbContext = dbContext;
         }
-         
-   
+
+
 
 
 
@@ -30,18 +30,21 @@ namespace PlayerAuthentication.Mediator
         public (int, string, Progress) InitPlayerAsGuest(PlayerAuthenticationInput inputData)
         {
 
-           
 
-            InitialProgress initialProgress= this._dbContext.InitialProgress.First();
+
+            InitialProgress initialProgress = this._dbContext.InitialProgress.First();
 
             Player.Progress progress = new Player.Progress(initialProgress.Gold, initialProgress.Silver, initialProgress.Level, initialProgress.Experience);
-            Identity identity = new Identity();
-         
-            var result = _repository.InitializePlayer(inputData.IsGuest,identity,  progress).Result;
+            Identity identity = new Identity(inputData.UserId,inputData.Email,inputData.TokenId,inputData.TokenId);
+
+            var result = _repository.InitializePlayer(inputData.IsGuest, identity, progress).Result;
 
             if (result.Item1 == SharedRepository.Models.ResponseType.Success)
             {
-                return (200, result.Item2.ToString(), result.Item3);
+
+                string jwtToken = _jwtHelper.GenerateJwtToken(result.Item2);
+
+                return (200, jwtToken, result.Item3);
             }
 
             return (500, null, null);
@@ -54,13 +57,14 @@ namespace PlayerAuthentication.Mediator
         public (int, string, Progress) InitPlayerWithService(PlayerAuthenticationInput inputData)
         {
             InitialProgress initialProgress = this._dbContext.InitialProgress.First();
-            Identity identity = new Identity();
+            Identity identity = new Identity( inputData.UserId, inputData.Email, inputData.TokenId, inputData.TokenId);
             Player.Progress progress = new Player.Progress(initialProgress.Gold, initialProgress.Silver, initialProgress.Level, initialProgress.Experience);
 
-            var result = _repository.InitializePlayer(inputData.IsGuest,identity, progress).Result;
+            var result = _repository.InitializePlayer(inputData.IsGuest, identity, progress).Result;
             if (result.Item1 == SharedRepository.Models.ResponseType.Success)
             {
-                return (200, result.Item2.ToString(), result.Item3);
+                string jwtToken = _jwtHelper.GenerateJwtToken(result.Item2);
+                return (200, jwtToken, result.Item3);
             }
             return (500, null, null);
         }
