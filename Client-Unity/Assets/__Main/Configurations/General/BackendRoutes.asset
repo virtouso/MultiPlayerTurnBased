@@ -12,14 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49c179d6b8dd814ca72d9511d1d54d8, type: 3}
   m_Name: BackendRoutes
   m_EditorClassIdentifier: 
-  BackendServices:
-  - _name: Authentication
+  _backendServices:
+  - _serviceName: 0
     SelectedBackendUrl:
       _backendType: 0
       Url: 
-    _urlList: []
+    _urlList:
+    - _backendType: 0
+      Url: localhost
+    - _backendType: 1
+      Url: 
+    - _backendType: 2
+      Url: 
     _serverRequestsList:
     - RequestName: 0
-      _subQuery: 
-      _requestFormKeys: []
-      _headerKeys: []
+      _subQuery: /InitPlayer
+      _requestFormKeys:
+      - 
+      _headerKeys:
+      - 

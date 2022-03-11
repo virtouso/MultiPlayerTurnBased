@@ -3,6 +3,7 @@ using MongoDB.Bson;
 using PlayerAuthentication.Mediator;
 using PlayerAuthentication.Models;
 using SharedUtility.Jwt;
+using SharedUtility.Jwt.Attributes;
 using System.IdentityModel.Tokens.Jwt;
 using static SharedModels.Player;
 

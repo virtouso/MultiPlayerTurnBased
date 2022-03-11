@@ -10,7 +10,7 @@ namespace SharedRepository
 {
     public interface IMongoRepository
     {
-        public Task<(ResponseType, ObjectId, Progress)> GetTokenForInitialPlayer(bool isGuest,Identity identity,  Progress initialProgress);
+        public Task<(ResponseType, ObjectId, Progress)> InitializePlayer(bool isGuest,Identity identity,  Progress initialProgress);
 
      
 

@@ -13,10 +13,11 @@ namespace SharedUtility.Jwt.Attributes
 
         public string FiltersList;
 
-        IJwtHelper _jwtHelper;
-        public CustomAuthorize(IJwtHelper jwtHelper)
+        IJwtHelper _jwtHelper= new JwtHelper();
+        public CustomAuthorize( string filtersList=null)
         {
-            this._jwtHelper = jwtHelper;
+           
+            this.FiltersList = filtersList;
         }
 
 

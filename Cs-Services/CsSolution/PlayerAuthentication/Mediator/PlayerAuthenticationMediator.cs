@@ -37,7 +37,7 @@ namespace PlayerAuthentication.Mediator
             Player.Progress progress = new Player.Progress(initialProgress.Gold, initialProgress.Silver, initialProgress.Level, initialProgress.Experience);
             Identity identity = new Identity();
          
-            var result = _repository.GetTokenForInitialPlayer(inputData.IsGuest,identity,  progress).Result;
+            var result = _repository.InitializePlayer(inputData.IsGuest,identity,  progress).Result;
 
             if (result.Item1 == SharedRepository.Models.ResponseType.Success)
             {
@@ -57,7 +57,7 @@ namespace PlayerAuthentication.Mediator
             Identity identity = new Identity();
             Player.Progress progress = new Player.Progress(initialProgress.Gold, initialProgress.Silver, initialProgress.Level, initialProgress.Experience);
 
-            var result = _repository.GetTokenForInitialPlayer(identity, progress).Result;
+            var result = _repository.InitializePlayer(inputData.IsGuest,identity, progress).Result;
             if (result.Item1 == SharedRepository.Models.ResponseType.Success)
             {
                 return (200, result.Item2.ToString(), result.Item3);

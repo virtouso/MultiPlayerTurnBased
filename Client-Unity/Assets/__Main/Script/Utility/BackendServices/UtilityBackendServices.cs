@@ -35,8 +35,11 @@ namespace Utility
                 content.AddField(RequestFieldNames.TokenId,tokenId);
                 content.AddField(RequestFieldNames.AuthCode,authCode);
                 string result = null;
-                ObservableWWW.Post(_backendRoutes.BackendServices[ServiceNames.PlayerAuthentication].SelectedBackendUrl.Url
-                                   + _backendRoutes.BackendServices[ServiceNames.PlayerAuthentication].Requests[BackendRequestNames.Login],
+                string requestUrl = _backendRoutes.BackendServices[ServiceNames.PlayerAuthentication].SelectedBackendUrl
+                                        .Url
+                                    + _backendRoutes.BackendServices[ServiceNames.PlayerAuthentication]
+                                        .Requests[BackendRequestNames.Login]._subQuery;
+                ObservableWWW.Post(requestUrl,
                         content,
                         headers)
                     .Subscribe(
