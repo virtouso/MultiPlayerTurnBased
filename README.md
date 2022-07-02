@@ -4,7 +4,7 @@
 ## Used C# on backend side & unity on client side
 
 - part of project that is no published yet.
-
+- turn it to pricate repo start working on it. 
 # Backend
 - used BDD
 - used Integration Tests with inmemory resources
