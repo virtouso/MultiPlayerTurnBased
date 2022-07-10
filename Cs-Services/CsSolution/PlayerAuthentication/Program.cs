@@ -26,9 +26,11 @@ builder.Services.AddSingleton(typeof(IMongoRepository), new MongoRepository(mong
 
 
 //string PostgreSqlConnectionString = builder.Configuration.GetConnectionString("PostgreSql");
-builder.Services.AddDbContext<MultiPlayerTurnBasedContext>(o=>o.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSql")));
+builder.Services.AddDbContext<MultiPlayerTurnBasedContext>(o=>
+    o.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSql")));
 
 var app = builder.Build();
+
 
 
 

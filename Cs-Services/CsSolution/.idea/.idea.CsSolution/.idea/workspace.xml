@@ -14,10 +14,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbc2a2bc-c7a7-4cff-970c-66e6429fe45a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/LeaderBoard/Controllers/HomeController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LeaderBoard/Models/ErrorViewModel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlayerAuthentication_Tests/Features/PlayerAskedToContinueAsPermanentUser.feature" beforeDir="false" afterPath="$PROJECT_DIR$/PlayerAuthentication_Tests/Features/PlayerAskedToContinueAsPermanentUser.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlayerAuthentication_Tests/PlayerAuthentication_Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/PlayerAuthentication_Tests/PlayerAuthentication_Tests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CsSolution/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CsSolution/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlayerAuthentication/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlayerAuthentication/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,18 +25,23 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="24t3RZAU6EMEHkJi2pWSHAEQTZ7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.AuthoritativeGameMechanics">
     <configuration name="AuthoritativeGameMechanics" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/AuthoritativeGameMechanics/AuthoritativeGameMechanics.csproj" />
@@ -200,6 +203,11 @@
       <option name="presentableId" value="Default" />
       <updated>1644436050286</updated>
       <workItem from="1644436070047" duration="62000" />
+      <workItem from="1654418630336" duration="524000" />
+      <workItem from="1654419402889" duration="1988000" />
+      <workItem from="1657126692921" duration="1747000" />
+      <workItem from="1657357795672" duration="764000" />
+      <workItem from="1657360107380" duration="2145000" />
     </task>
     <servers />
   </component>
@@ -207,7 +215,7 @@
     <option name="version" value="3" />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
